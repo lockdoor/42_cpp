@@ -5,30 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 09:47:10 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/01/27 10:08:56 by pnamnil          ###   ########.fr       */
+/*   Created: 2024/01/28 08:16:36 by pnamnil           #+#    #+#             */
+/*   Updated: 2024/01/28 10:25:22 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
-#include <iostream>
-#include <string>
+#include "Zombie.hpp"
+
+Zombie *zombieHorde(int n, std::string name)
+{
+	Zombie *zombie = new Zombie[n];
+	for (int i = 0; i < n; i++) zombie[i].setName(name); 
+	return (zombie);
+}
 
 int	main(void)
 {
-	PhoneBook	pb;
-
-	std::cout << "Welcome to Phonebook please type command" << std::endl;
-	std::cout << "[ ADD | SEARCH | EXIT ]" << std::endl;
-	while (true)
-	{
-		std::string	cmd;
-		std::cout << "phonebook> ";
-		if (!std::getline(std::cin, cmd)) break;
-		if (cmd == "e") break;
-		if (cmd == "a") pb.add();
-		else if (cmd == "s") pb.search();	
-	}
-	std::cout << "Good bye ....." << std::endl;
+	int	n = 5;
+	Zombie	*zombie = zombieHorde(n, "Bob");
+	for (int i = 0; i < n; i++) zombie[i].announce();
+	delete [] zombie;
 	return (0);
 }

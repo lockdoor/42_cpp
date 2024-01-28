@@ -6,19 +6,21 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 17:06:25 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/01/26 13:07:34 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/01/28 06:29:51 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include <iostream>
 #include <string>
+#include <sstream>
 
-PhoneBook::PhoneBook(void){}
+PhoneBook::PhoneBook(void){
+	_index = 0;
+	_number = 0;
+}
 
 PhoneBook::~PhoneBook(void){}
-
-std::size_t PhoneBook::_index = 0;
 
 std::string	PhoneBook::__getInput(std::string prompt)
 {
@@ -27,7 +29,10 @@ std::string	PhoneBook::__getInput(std::string prompt)
 	while (true)
 	{
 		std::cout << prompt << "> ";
-		if (!std::getline(std::cin, input)) break;
+		if (!std::getline(std::cin, input)) {
+			std::cout << "Good bye ....." << std::endl;
+			exit(0);
+		}
 		if (!input.empty()) break;
 	}
 	return (input);
@@ -45,22 +50,57 @@ void	PhoneBook::add(void)
 	data[4] = __getInput("Secret");
 	_contact[_index].setData(data);
 	_index++;
-	if (_index == 8) _index = 0;
+	if (_index == CONTACT_NUMBER) _index = 0;
+	if (_number < CONTACT_NUMBER) _number++;
+}
+
+int PhoneBook::_isIndex(const std::string &str)
+{
+	for (std::size_t i = 0; i < str.length(); i++) {
+		if (!std::isdigit(str[i])) return (-1);
+	}
+	int	index = std::atoi(str.data());
+	return ((index >= 1 && index <= CONTACT_NUMBER) ? index : -1);
+}
+
+void	PhoneBook::_showContact(void)const
+{
+	std::cout << "============= all contact =============" << std::endl;
+	for(int i = 0; i < _number; i++){
+		_contact[i].showContact(i + 1, TRUNCATE);
+	}
 }
 
 void	PhoneBook::search(void)
 {
-	std::size_t	index;
-
-	std::cout << "funtion search called" << std::endl;
-	std::cout << "index> ";
-	while (!(std::cin >> index))
+	if (_number == 0)
 	{
-		std::cout << "index> ";
-		// if (std::cin >> index) break;
-		// if (!std::cin.eof())continue;
+		std::cout << "=========== contact is empty ==========" << std::endl;
+		return ;
 	}
-	// std::cin >> index ;
-	
-	_contact[index].getData();
+	_showContact();
+	while (true)
+	{
+		std::string	input;
+		std::cout << "index> ";
+		if (!std::getline(std::cin, input)) {
+			std::cout << "Good bye ....." << std::endl;
+			exit(0);
+		}
+		if (input.length())
+		{
+			std::istringstream strstream(input);
+			while (strstream >> input)
+			{
+				int	index = _isIndex(input);
+				if (index != -1){
+					std::cout << "index: " << index << std::endl;
+					_contact[index - 1].getData();
+				} else {
+					std::cout << input << ": can not find index" << std::endl;
+				}
+			}
+			break;	
+		}
+	}
 }

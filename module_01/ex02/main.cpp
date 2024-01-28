@@ -5,30 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 09:47:10 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/01/27 10:08:56 by pnamnil          ###   ########.fr       */
+/*   Created: 2024/01/28 08:16:36 by pnamnil           #+#    #+#             */
+/*   Updated: 2024/01/28 10:53:49 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
 #include <iostream>
 #include <string>
 
 int	main(void)
 {
-	PhoneBook	pb;
-
-	std::cout << "Welcome to Phonebook please type command" << std::endl;
-	std::cout << "[ ADD | SEARCH | EXIT ]" << std::endl;
-	while (true)
-	{
-		std::string	cmd;
-		std::cout << "phonebook> ";
-		if (!std::getline(std::cin, cmd)) break;
-		if (cmd == "e") break;
-		if (cmd == "a") pb.add();
-		else if (cmd == "s") pb.search();	
-	}
-	std::cout << "Good bye ....." << std::endl;
+	std::string string = "HI THIS IS BRAIN";
+	std::string *stringPTR = &string;
+	std::string &stringREF = string;
+	std::cout << "string address: " << &string << std::endl;
+	std::cout << "*stringPTR address: " << stringPTR << std::endl;
+	std::cout << "&strintREF address: " << &stringREF << std::endl;
+	std::cout << "string value: " << string << std::endl;
+	std::cout << "*stringPTR value: " << *stringPTR << std::endl;
+	std::cout << "&strintREF value: " << stringREF << std::endl;
 	return (0);
 }

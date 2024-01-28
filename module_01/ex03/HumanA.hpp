@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/22 16:49:42 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/01/27 11:52:42 by pnamnil          ###   ########.fr       */
+/*   Created: 2024/01/28 12:02:01 by pnamnil           #+#    #+#             */
+/*   Updated: 2024/01/28 14:40:35 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
-# include "Contact.hpp"
-# include <string>
-# define CONTACT_NUMBER 8
-# define TRUNCATE 10
+#ifndef HUMAN_A_HPP
+#define HUMAN_A_HPP
+#include <string>
+#include "Weapon.hpp"
 
-class PhoneBook
+class HumanA
 {
 private:
-	Contact		_contact[CONTACT_NUMBER];
-	std::size_t	_index;
-	std::size_t	_number;
-	std::string	__getInput(std::string prompt);
-	int			_isIndex(const std::string &str);
-	void		_showContact(void) const;
+	std::string	_name;
+	Weapon*			_weapon;
 public:
-	PhoneBook();
-	~PhoneBook();
-	void	add(void);
-	void	search(void);
+	HumanA(std::string name, Weapon &weapon);
+	~HumanA();
+	void attack(void) const;
 };
 
 #endif

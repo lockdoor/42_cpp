@@ -5,30 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 09:47:10 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/01/27 10:08:56 by pnamnil          ###   ########.fr       */
+/*   Created: 2024/01/28 15:18:08 by pnamnil           #+#    #+#             */
+/*   Updated: 2024/01/28 16:16:44 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
 #include <iostream>
+#include <fstream>
 #include <string>
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	PhoneBook	pb;
-
-	std::cout << "Welcome to Phonebook please type command" << std::endl;
-	std::cout << "[ ADD | SEARCH | EXIT ]" << std::endl;
-	while (true)
-	{
-		std::string	cmd;
-		std::cout << "phonebook> ";
-		if (!std::getline(std::cin, cmd)) break;
-		if (cmd == "e") break;
-		if (cmd == "a") pb.add();
-		else if (cmd == "s") pb.search();	
+	if (argc != 2)
+		return (EXIT_FAILURE);
+	std::ifstream istrm(argv[1]);
+	if (!istrm.is_open()){
+		std::cerr << "failed to open " << argv[1] << std::endl;
+		return (EXIT_FAILURE);
 	}
-	std::cout << "Good bye ....." << std::endl;
+	std::string	line;
+	while (std::getline(istrm, line))
+	{
+		std::cout << line << std::endl;
+	}
+	istrm.close();
 	return (0);
 }

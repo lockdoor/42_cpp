@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/22 16:49:42 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/01/27 11:52:42 by pnamnil          ###   ########.fr       */
+/*   Created: 2024/01/28 07:16:59 by pnamnil           #+#    #+#             */
+/*   Updated: 2024/01/28 10:00:57 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
-# include "Contact.hpp"
-# include <string>
-# define CONTACT_NUMBER 8
-# define TRUNCATE 10
+#ifndef ZOMBIE_HPP
+#define ZOMBIE_HPP
+#include <string>
 
-class PhoneBook
+class Zombie
 {
 private:
-	Contact		_contact[CONTACT_NUMBER];
-	std::size_t	_index;
-	std::size_t	_number;
-	std::string	__getInput(std::string prompt);
-	int			_isIndex(const std::string &str);
-	void		_showContact(void) const;
+	std::string	_name;
 public:
-	PhoneBook();
-	~PhoneBook();
-	void	add(void);
-	void	search(void);
+	Zombie();
+	Zombie(std::string name);
+	~Zombie();
+	void announce(void) const;
+	void setName(std::string name);
 };
 
 #endif

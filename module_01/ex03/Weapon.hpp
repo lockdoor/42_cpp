@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/22 16:49:42 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/01/27 11:52:42 by pnamnil          ###   ########.fr       */
+/*   Created: 2024/01/28 10:56:38 by pnamnil           #+#    #+#             */
+/*   Updated: 2024/01/28 11:11:31 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
-# include "Contact.hpp"
-# include <string>
-# define CONTACT_NUMBER 8
-# define TRUNCATE 10
+#ifndef WEAPON_HPP
+#define WEAPON_HPP
+#include <string>
 
-class PhoneBook
+class Weapon
 {
 private:
-	Contact		_contact[CONTACT_NUMBER];
-	std::size_t	_index;
-	std::size_t	_number;
-	std::string	__getInput(std::string prompt);
-	int			_isIndex(const std::string &str);
-	void		_showContact(void) const;
+	std::string	_type;
 public:
-	PhoneBook();
-	~PhoneBook();
-	void	add(void);
-	void	search(void);
+	Weapon();
+	Weapon(std::string type);
+	~Weapon();
+	std::string	getType(void) const;
+	void				setType(std::string type);
 };
 
 #endif

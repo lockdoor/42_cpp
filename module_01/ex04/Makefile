@@ -1,11 +1,11 @@
-NAME = phonebook
+NAME = prog
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp PhoneBook.cpp Contact.cpp
+SRCS = main.cpp
 
-HEADERS = PhoneBook.hpp Contact.hpp
+# HEADERS = 
 
 OBJS = $(SRCS:.cpp=.o)
 
@@ -20,7 +20,7 @@ m:
 	./$(NAME)
 
 l:
-	valgrind ./$(NAME)
+	valgrind --leak-check=full ./$(NAME)
 
 clean:
 	rm -f $(OBJS)
