@@ -1,3 +1,5 @@
 zombie.dSYM
 prog.dSYM
 *.o
+*.replace
+harlFilter

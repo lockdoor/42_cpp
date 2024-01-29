@@ -1,0 +1,48 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+
+int main(int argc, char **argv)
+{
+	// check argument
+	if (argc != 4) {
+		std::cerr << "use ./prog filename s1 s2" << std::endl;
+		return (EXIT_FAILURE);
+	}
+
+	// open in file
+	std::ifstream file(argv[1]);
+	if (!file.is_open()) {
+		std::cerr << "can not open " << argv[1] << std::endl;
+		return (EXIT_FAILURE); 
+	}
+
+	// open out file
+	std::string fileOut = argv[1];
+	fileOut += ".replace";
+	std::ofstream replace(fileOut, std::ios::binary);
+	if (!replace.is_open()) {
+		std::cerr << "can not open " << fileOut << std::endl;
+		return (EXIT_FAILURE); 
+	}
+
+	// begin replace
+	std::string	str;
+	while(std::getline(file, str)) {
+		std::string find(argv[2]);
+		// std::string rep(argv[3]);
+		std::size_t found = 0;
+		while (found != std::string::npos){
+			found = str.find(find);
+			if (found == std::string::npos)
+			{
+				replace << str;
+				break ;
+			}
+			replace << str.substr(0, found) << argv[3];
+			str = str.substr(found + find.length());
+		}
+		replace << std::endl;
+	}
+	return (0);
+}

@@ -5,19 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 09:47:10 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/01/29 05:57:15 by pnamnil          ###   ########.fr       */
+/*   Created: 2024/01/29 12:40:12 by pnamnil           #+#    #+#             */
+/*   Updated: 2024/01/29 12:41:49 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
-#include <iostream>
-#include <string>
+#include "Harl.hpp"
 
 int	main(void)
 {
-	PhoneBook	pb;
-
-	pb.open();
+	Harl	harl;
+	harl.complain("debug");
+	harl.complain("info");
+	harl.complain("warning");
+	harl.complain("error");
 	return (0);
 }

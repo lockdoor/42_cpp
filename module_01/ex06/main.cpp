@@ -5,19 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 09:47:10 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/01/29 05:57:15 by pnamnil          ###   ########.fr       */
+/*   Created: 2024/01/29 12:40:12 by pnamnil           #+#    #+#             */
+/*   Updated: 2024/01/29 12:57:05 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
+#include "Harl.hpp"
 #include <iostream>
-#include <string>
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	PhoneBook	pb;
-
-	pb.open();
+	if (argc != 2){
+		std::cerr << "use ./harlFilter level" << std::endl;
+	}
+	Harl	harl;
+	harl.complain(argv[1]);
 	return (0);
 }

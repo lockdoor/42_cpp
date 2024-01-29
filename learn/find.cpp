@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/28 15:18:08 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/01/29 10:43:17 by pnamnil          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -42,6 +30,7 @@ int main(int argc, char **argv)
 	std::string	buf;
 	while(std::getline(file, buf)) {
 		std::string find(argv[2]);
+		// std::string rep(argv[3]);
 		std::size_t found = 0;
 		while (found != std::string::npos){
 			found = buf.find(find);
