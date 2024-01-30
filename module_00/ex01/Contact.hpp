@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:07:31 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/01/28 06:37:25 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/01/30 08:38:38 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ public:
 	Contact(void);
 	~Contact(void);
 	void	setData(std::string data[5]);
-	void	getData(void) const;
+	void	getData(int const index) const;
 	void	showContact(std::size_t index, std::size_t len) const;
 	static std::string	truncate(const std::string &str, std::size_t len);
 };

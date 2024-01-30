@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 09:42:34 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/01/28 06:45:09 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/01/30 08:40:39 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,11 @@ void Contact::showContact(std::size_t index, std::size_t len) const
 	std::cout << std::endl;
 }
 
-void Contact::getData(void) const
+void Contact::getData(int const index) const
 {
 	if (_hasData){
+		std::cout << std::setw(12) << std::right << "index:";
+		std::cout << " " << index << std::endl;
 		std::cout << std::setw(12) << std::right << "First name:";
 		std::cout << " " << _fname << std::endl;
 		std::cout << std::setw(12) << std::right << "Last name:";

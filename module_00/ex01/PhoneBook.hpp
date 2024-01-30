@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:49:42 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/01/29 05:56:41 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/01/30 09:42:11 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ private:
 	Contact		_contact[CONTACT_NUMBER];
 	std::size_t	_index;
 	std::size_t	_number;
-	std::string	__getInput(std::string prompt) const;
+	std::string	__getInput(std::string prompt);
 	int			__isIndex(const std::string &str) const;
 	void		__showContact(void) const;
+	std::string __trim(std::string &str);
 public:
 	PhoneBook();
 	~PhoneBook();

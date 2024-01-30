@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 17:06:25 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/01/29 05:57:41 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/01/30 09:42:16 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,27 @@ PhoneBook::PhoneBook(void){
 
 PhoneBook::~PhoneBook(void){}
 
-std::string	PhoneBook::__getInput(std::string prompt) const
+std::string PhoneBook::__trim(std::string &str)
+{
+	std::size_t start = str.find_first_not_of(" \t\n\r");
+	std::size_t end = str.find_last_not_of(" \t\n\r");
+	if (start == std::string::npos || start == std::string::npos)
+		return ("");
+	return (str.substr(start, end - start + 1));
+}
+
+std::string	PhoneBook::__getInput(std::string prompt)
 {
 	std::string	input;
 
-	while (true)
+	while (input.empty())
 	{
 		std::cout << prompt << "> ";
 		if (!std::getline(std::cin, input)) {
 			std::cout << "Good bye ....." << std::endl;
 			exit(0);
 		}
-		if (!input.empty()) break;
+		input = __trim(input);
 	}
 	return (input);
 }
@@ -94,8 +103,7 @@ void	PhoneBook::search(void) const
 			{
 				int	index = __isIndex(input);
 				if (index != -1){
-					std::cout << "index: " << index << std::endl;
-					_contact[index - 1].getData();
+					_contact[index - 1].getData(index);
 				} else {
 					std::cout << input << ": can not find index" << std::endl;
 				}
