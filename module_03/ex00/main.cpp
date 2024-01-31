@@ -5,32 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/30 07:09:01 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/01/31 06:00:47 by pnamnil          ###   ########.fr       */
+/*   Created: 2024/01/31 14:56:52 by pnamnil           #+#    #+#             */
+/*   Updated: 2024/01/31 15:19:36 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "ClapTrap.hpp"
 #include <iostream>
 
 int main(void)
 {
-	Fixed 		a;
-	Fixed const b(10);
-	Fixed const c(42.42f);
-	Fixed const d(b);
-
-	a = Fixed(1234.4321f);
-	
-	std::cout << "a is " << a << std::endl;
-	std::cout << "b is " << b << std::endl;
-	std::cout << "c is " << c << std::endl;
-	std::cout << "d is " << d << std::endl;
-	
-	std::cout << "a is " << a.toInt() << " as integer" << std::endl;
-	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
-	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
-	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
-
+	std::string n = "gun";
+	ClapTrap a("axe");
+	ClapTrap b;
+	b = a;
+	b.setName("knife");
+	std::cout << a.getName() << &a.getName() << " | " << &a << std::endl;
+	std::cout << b.getName() << &b.getName() << " | " << &b << std::endl;
+	b.setName(n);
+	std::cout << b.getName() << &b.getName() << " | " << &b << std::endl;
 	return (0);
 }

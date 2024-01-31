@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 06:42:17 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/01/31 13:05:37 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/01/31 13:19:12 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,29 @@ public:
 	float toFloat(void) const;
 	int toInt(void) const;
 	static int abs(int);
+	
+	/* overload operator */
+	bool operator< (Fixed const &rhs) const;
+	bool operator> (Fixed const &rhs) const;
+	bool operator<=(Fixed const &rhs) const;
+	bool operator>=(Fixed const &rhs) const;
+	bool operator==(Fixed const &rhs) const;
+	bool operator!=(Fixed const &rhs) const;
+
+	Fixed operator+ (Fixed const &rhs) const;
+	Fixed operator- (Fixed const &rhs) const;
+	Fixed operator* (Fixed const &rhs) const;
+	Fixed operator/ (Fixed const &rhs) const;
+
+	Fixed & operator++ (void);
+	Fixed operator++ (int);
+	Fixed & operator-- (void);
+	Fixed operator-- (int);
+
+	const static Fixed & min(Fixed &lsh, Fixed &rsh);
+	const static Fixed & min(Fixed const &lsh, Fixed const &rsh);
+	const static Fixed & max(Fixed &lsh, Fixed &rsh);
+	const static Fixed & max(Fixed const &lsh, Fixed const &rsh);
 };
 
 std::ostream & operator<<(std::ostream &o, Fixed const &i);
