@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 14:22:00 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/01 08:29:29 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/01 16:40:04 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,16 +103,31 @@ int ClapTrap::getAttackDamage(void) const
 
 /* =========================== member function ======================== */
 
+void ClapTrap::attack(const std::string & target)
+{
+	if (!_hitPoint && !_energyPoint)
+		return ;
+	_energyPoint -= 1;
+	std::cout << "ClapTrap " << _name << " attacks " << target << ", causing "
+		<< _attackDamage << " points of damage!" << std::endl;
+}
+
 void ClapTrap::takeDamage(unsigned int amount)
 {
 	_hitPoint = (_hitPoint - amount) > 0 
 		? _hitPoint - amount : 0;
+	std::cout << _name << " take " << amount << " damage, hit point remain " 
+		<< _hitPoint << std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
-	_energyPoint = (_energyPoint + amount) < _energyPointMax 
-		? _energyPoint + amount 
-		: _energyPointMax;
+	if (_energyPoint){
+		std::cout << _name << "  " << amount << std::endl;
+		_hitPoint = (_hitPoint + amount) < _hitPointMax 
+			? _hitPoint + amount 
+			: _hitPointMax;
+		_energyPoint -= 1;	
+	}
 }
 
