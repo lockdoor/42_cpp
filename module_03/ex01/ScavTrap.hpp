@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 14:56:52 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/02 07:35:45 by pnamnil          ###   ########.fr       */
+/*   Created: 2024/02/02 08:10:32 by pnamnil           #+#    #+#             */
+/*   Updated: 2024/02/02 10:55:35 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
-#include <iostream>
-#include <cstdlib>
-#include <ctime>
+#ifndef SCAVTRAP_HPP
+#define SCAVTRAP_HPP
 
-int main(void)
+#include "ClapTrap.hpp"
+
+class ScavTrap : public ClapTrap
 {
-	std::srand(static_cast<unsigned int>(std::time(0)));
-	ClapTrap suck("Suck");
-	while (suck.is_alive())
-	{
-		suck.attack("Poling");
-		suck.takeDamage(std::rand() % 10 + 1);
-		suck.beRepaired(std::rand() % 10 + 1);
-	}
-	return (0);
-}
+private:
+    /* data */
+public:
+    ScavTrap(std::string const &name);
+    ~ScavTrap();
+    void attack(const std::string & target);
+    using ClapTrap::beRepaired;
+    void guardGate(void) const;
+};
+
+#endif

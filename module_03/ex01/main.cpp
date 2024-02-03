@@ -6,11 +6,11 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 14:56:52 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/02 07:35:45 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/02 10:25:48 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -18,7 +18,8 @@
 int main(void)
 {
 	std::srand(static_cast<unsigned int>(std::time(0)));
-	ClapTrap suck("Suck");
+	ScavTrap suck("Suck");
+	suck.guardGate();
 	while (suck.is_alive())
 	{
 		suck.attack("Poling");

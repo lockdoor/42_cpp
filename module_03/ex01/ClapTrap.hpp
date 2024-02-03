@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 13:56:55 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/02 07:40:56 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/02 10:13:26 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 class ClapTrap
 {
-private:
+protected:
 	std::string _name;
 	int	_hitPointMax;
 	int	_energyPointMax;
@@ -31,7 +31,6 @@ private:
 	int _attackDamage;
 	
 public:
-	ClapTrap(/* args */);
 	ClapTrap(std::string const &name);
 	ClapTrap(ClapTrap const &rhs);
 	ClapTrap & operator=(ClapTrap const &rhs);

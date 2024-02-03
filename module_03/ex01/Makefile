@@ -1,17 +1,17 @@
 NAME = claptrap
 
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror  -Wno-shadow  -std=c++98
 
-SRCS = main.cpp ClapTrap.cpp
+SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp
 
-HEADERS = ClapTrap.hpp
+HEADERS = ClapTrap.hpp ScavTrap.hpp
 
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
-$(OBJS): $(HEADERS)
+$(OBJS): $(HEADERS) Makefile
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)

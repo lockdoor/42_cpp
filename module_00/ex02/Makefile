@@ -1,26 +1,26 @@
-NAME = claptrap
+NAME = account
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp ClapTrap.cpp
+SRCS = tests.cpp Account.cpp
 
-HEADERS = ClapTrap.hpp
+HEADERS = Account.hpp
 
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
-$(OBJS): $(HEADERS)
+$(OBJS): $(HEADERS) Makefile
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 m:
-	./$(NAME)
+	./$(NAME) > log
 
 l:
-	valgrind --leak-check=full ./$(NAME)
+	valgrind ./$(NAME)
 
 clean:
 	rm -f $(OBJS)

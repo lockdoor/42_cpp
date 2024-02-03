@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 15:18:08 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/01/30 16:58:10 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/02 08:50:31 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int main(int argc, char **argv)
 	std::ofstream replace(fileOut, std::ios::binary);
 	if (!replace.is_open()) {
 		std::cerr << "can not open " << fileOut << std::endl;
+		file.close();
 		return (EXIT_FAILURE); 
 	}
 
@@ -55,5 +56,7 @@ int main(int argc, char **argv)
 		}
 		replace << std::endl;
 	}
+	file.close();
+	replace.close();
 	return (0);
 }

@@ -1,4 +1,6 @@
 phonebook.dSYM
 phonebook
-*.o
+account
 megaphone
+*.o
+log
