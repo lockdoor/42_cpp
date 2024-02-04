@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 09:26:56 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/04 09:33:08 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/04 14:18:58 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,16 @@
 #include "FragTrap.hpp"
 #include "ScavTrap.hpp"
 
-class DiamondTrap : public ScavTrap
+class DiamondTrap : virtual public ScavTrap, virtual public FragTrap
 {
 private:
 	std::string _name;
 public:
 	DiamondTrap(std::string const &name);
 	~DiamondTrap();
+	// DiamondTrap & operator=(DiamondTrap const &rhs);
+	using ScavTrap::attack;
+	void whoAmI(void) const;
 };
-
-#include <iostream>
-
-DiamondTrap::DiamondTrap(std::string const &name) : ScavTrap(name + "_clap_name")
-{
-	_name = name;
-	std::cout << "DiamondTrap constructor string name called " << _name << std::endl;
-}
-
-DiamondTrap::~DiamondTrap()
-{
-	std::cout << "DiamondTrap destructor called " << std::endl;
-}
-
 
 #endif

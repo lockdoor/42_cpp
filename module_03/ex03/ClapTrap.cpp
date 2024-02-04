@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 14:22:00 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/02 10:13:47 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/04 10:23:20 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@
 
 ClapTrap::ClapTrap(std::string const &name)
 {
-	std::cout << "ClapTrap constructor string name called" << std::endl;
 	_name = name;
 	_hitPointMax = 10;
 	_hitPoint = 10;
 	_energyPointMax = 10;
 	_energyPoint = 10;
 	_attackDamage = 0;
+	std::cout << "ClapTrap constructor string name: " << _name << " called"  << std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap const &rhs)

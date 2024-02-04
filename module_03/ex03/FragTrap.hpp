@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 07:47:16 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/04 09:03:29 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/04 10:42:28 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "ClapTrap.hpp"
 
-class FragTrap : public ClapTrap
+class FragTrap : virtual public ClapTrap
 {
 private:
 	/* data */

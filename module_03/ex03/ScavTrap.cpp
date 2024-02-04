@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 10:14:49 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/02 10:55:12 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/04 11:45:38 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <iostream>
 
 ScavTrap::ScavTrap(std::string const &name) : ClapTrap(name){
-    std::cout << "ScavTrap constructor string name called" << std::endl;
+    std::cout << "ScavTrap constructor string name: " << _name << " called" << std::endl;
     _hitPointMax = 100;
     _hitPoint = 100;
     _energyPointMax = 50;
@@ -38,5 +38,5 @@ void ScavTrap::attack(const std::string & target)
 
 void ScavTrap::guardGate(void) const
 {
-	std::cout << "ScavTrap is now in Gate keeper mode." << std::endl;
+	std::cout << "ScavTrap " << _name << " is now in Gate keeper mode." << std::endl;
 }

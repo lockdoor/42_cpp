@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 14:56:52 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/04 14:28:16 by pnamnil          ###   ########.fr       */
+/*   Created: 2024/02/04 15:02:12 by pnamnil           #+#    #+#             */
+/*   Updated: 2024/02/04 15:03:50 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "DiamondTrap.hpp"
+#include "Zombie.hpp"
 #include <iostream>
-#include <cstdlib>
-#include <ctime>
 
-int main(void)
+Zombie *zombieHorde(int n, std::string name)
 {
-	std::srand(static_cast<unsigned int>(std::time(0)));
-	DiamondTrap suck("Suck");
-	suck.whoAmI();
-	suck.highFivesGuys();
-	suck.guardGate(); 
-	while (suck.is_alive())
+	if (n < 1 || n > 1000)
 	{
-		suck.attack("Poling");
-		suck.takeDamage(std::rand() % 10 + 1);
-		suck.beRepaired(std::rand() % 10 + 1);
+		std::cerr << "can not create " << n << " zombie" << std::endl;
+		exit (EXIT_FAILURE);
 	}
-	DiamondTrap seed("helll");
-	seed = suck;
-	seed.whoAmI();
-	return (0);
+	Zombie *zombie = new Zombie[n];
+	for (int i = 0; i < n; i++) zombie[i].setName(name); 
+	return (zombie);
 }

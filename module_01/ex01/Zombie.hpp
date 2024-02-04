@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 07:16:59 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/01/28 10:00:57 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/04 15:03:00 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ public:
 	void announce(void) const;
 	void setName(std::string name);
 };
+
+Zombie *zombieHorde(int n, std::string name);
 
 #endif
