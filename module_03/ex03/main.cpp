@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/02 08:10:32 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/04 07:42:21 by pnamnil          ###   ########.fr       */
+/*   Created: 2024/01/31 14:56:52 by pnamnil           #+#    #+#             */
+/*   Updated: 2024/02/04 09:35:49 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-#define SCAVTRAP_HPP
+#include "DiamondTrap.hpp"
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
 
-#include "ClapTrap.hpp"
-
-class ScavTrap : public ClapTrap
+int main(void)
 {
-private:
-    /* data */
-public:
-    ScavTrap(std::string const &name);
-    ~ScavTrap();
-    void attack(const std::string & target);
-    void guardGate(void) const;
-};
-
-#endif
+	std::srand(static_cast<unsigned int>(std::time(0)));
+	DiamondTrap suck("Suck");
+	// suck.highFivesGuys(); 
+	// while (suck.is_alive())
+	// {
+	// 	suck.attack("Poling");
+	// 	suck.takeDamage(std::rand() % 10 + 1);
+	// 	suck.beRepaired(std::rand() % 10 + 1);
+	// }
+	return (0);
+}
