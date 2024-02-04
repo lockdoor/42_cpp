@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 08:16:36 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/01/28 09:15:39 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/04 06:54:47 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	randomChump(std::string name)
 int	main(void)
 {
 	Zombie	*zombie = newZombie("Bob");
+	zombie->announce();
 	randomChump("Jame");
 	delete zombie;
 	return (0);

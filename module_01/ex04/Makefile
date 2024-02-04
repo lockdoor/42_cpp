@@ -17,7 +17,7 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 m:
-	./$(NAME) $(SRCS) buf str
+	./$(NAME) $(SRCS) return replace
 
 l:
 	valgrind --leak-check=full ./$(NAME)

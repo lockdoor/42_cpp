@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 15:18:08 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/02 08:50:31 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/04 07:22:31 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int main(int argc, char **argv)
 	while(std::getline(file, buf)) {
 		std::string find(argv[2]);
 		std::size_t found = 0;
-		while (found != std::string::npos){
+		while (true){
 			found = buf.find(find);
 			if (found == std::string::npos)
 			{
