@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/30 06:42:17 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/05 14:37:21 by pnamnil          ###   ########.fr       */
+/*   Created: 2024/02/05 13:36:51 by pnamnil           #+#    #+#             */
+/*   Updated: 2024/02/05 13:39:42 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-#define FIXED_HPP
+#include "WrongCat.hpp"
+#include <iostream>
 
-class Fixed
+WrongCat::WrongCat(/* args */)
 {
-private:
-	int	_fixed;
-	static int const _fract = 8;
-public:
-	Fixed(void);
-	Fixed(Fixed const &rhs);
-	Fixed & operator=(Fixed const &rhs);
-	~Fixed();
-	int	getRowBits(void) const;
-	void setRawBits(int const raw);
-};
+    type = "WrongCat";
+	std::cout << type << " constructor called" << std::endl;
+}
 
-#endif
+WrongCat::~WrongCat()
+{
+    std::cout << type << " destructor called" << std::endl;
+}
+
+void WrongCat::makeSound(void) const
+{
+    std::cout << type << ": Meaw" << std::endl;
+}

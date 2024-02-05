@@ -11,13 +11,14 @@ public:
         std::cout << "Humen constructor called" << std::endl;
     }
 
-    Humen(std::string name) : _name(name){
+    Humen(std::string const &name) : _name(name){
         std::cout << "Humen constructor name called" << std::endl;
         nb = new int[10];
         nb[0] = 100;
     }
 
     virtual ~Humen(){
+    // ~Humen(){
         std::cout << "Humen destructor called" << std::endl;
         delete[] nb;
     }
@@ -42,13 +43,13 @@ class Man : public Humen
 private:
     int *nb;
 public:
-    Man(std::string name) : Humen(name){
+    Man(std::string const &name) : Humen(name){
         std::cout << "Men constructor called" << std::endl;
         nb = new int[20];
         nb[0] = 42;
     }
-    ~Man() override {
-        std::cout << "Men constructor called" << std::endl;
+    ~Man() {
+        std::cout << "Men destructor called" << std::endl;
         delete[] nb;
     }
 };

@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/30 06:42:17 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/05 14:37:21 by pnamnil          ###   ########.fr       */
+/*   Created: 2024/02/05 13:09:30 by pnamnil           #+#    #+#             */
+/*   Updated: 2024/02/05 14:00:40 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-#define FIXED_HPP
+#include "Cat.hpp"
+#include <iostream>
 
-class Fixed
+Cat::Cat(/* args */)
 {
-private:
-	int	_fixed;
-	static int const _fract = 8;
-public:
-	Fixed(void);
-	Fixed(Fixed const &rhs);
-	Fixed & operator=(Fixed const &rhs);
-	~Fixed();
-	int	getRowBits(void) const;
-	void setRawBits(int const raw);
-};
+	type = "Cat";
+	std::cout << type << " constructor called" << std::endl;
+}
 
-#endif
+Cat::~Cat()
+{
+	std::cout << "Cat " << type << " destructor called" << std::endl;
+}
+
+void Cat::makeSound(void) const
+{
+	std::cout << type << ": Meaw" << std::endl;
+}

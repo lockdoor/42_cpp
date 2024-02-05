@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/30 06:42:17 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/05 14:37:21 by pnamnil          ###   ########.fr       */
+/*   Created: 2024/02/05 12:46:52 by pnamnil           #+#    #+#             */
+/*   Updated: 2024/02/05 16:31:16 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-#define FIXED_HPP
+#ifndef ANIMAL_HPP
+#define ANIMAL_HPP
 
-class Fixed
+#include <string>
+
+class Animal
 {
-private:
-	int	_fixed;
-	static int const _fract = 8;
+protected:
+	std::string type;
 public:
-	Fixed(void);
-	Fixed(Fixed const &rhs);
-	Fixed & operator=(Fixed const &rhs);
-	~Fixed();
-	int	getRowBits(void) const;
-	void setRawBits(int const raw);
+	Animal(/* args */);
+	Animal(Animal const &rhs);
+	// ClapTrap & operator=(ClapTrap const &rhs);
+	Animal & operator=(Animal const &rhs);
+	virtual ~Animal();
+	virtual void makeSound(void) const;
+	std::string const getType(void) const;
 };
+
+
 
 #endif

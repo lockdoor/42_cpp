@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/30 06:42:17 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/05 14:37:21 by pnamnil          ###   ########.fr       */
+/*   Created: 2024/02/05 13:15:29 by pnamnil           #+#    #+#             */
+/*   Updated: 2024/02/05 13:29:15 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-#define FIXED_HPP
+#ifndef WRONG_ANIMAL_HPP
+#define WRONG_ANIMAL_HPP
 
-class Fixed
+#include <string>
+
+class WrongAnimal
 {
-private:
-	int	_fixed;
-	static int const _fract = 8;
+protected:
+    std::string type;
 public:
-	Fixed(void);
-	Fixed(Fixed const &rhs);
-	Fixed & operator=(Fixed const &rhs);
-	~Fixed();
-	int	getRowBits(void) const;
-	void setRawBits(int const raw);
+    WrongAnimal(/* args */);
+    ~WrongAnimal();
+    void makeSound(void) const;
 };
 
 #endif

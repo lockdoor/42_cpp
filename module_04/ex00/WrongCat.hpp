@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/30 06:42:17 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/05 14:37:21 by pnamnil          ###   ########.fr       */
+/*   Created: 2024/02/05 13:34:56 by pnamnil           #+#    #+#             */
+/*   Updated: 2024/02/05 13:37:43 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-#define FIXED_HPP
+#ifndef WRONG_CAT_HPP
+#define WRONG_CAT_HPP
 
-class Fixed
+#include "WrongAnimal.hpp"
+
+class WrongCat : public WrongAnimal
 {
-private:
-	int	_fixed;
-	static int const _fract = 8;
 public:
-	Fixed(void);
-	Fixed(Fixed const &rhs);
-	Fixed & operator=(Fixed const &rhs);
-	~Fixed();
-	int	getRowBits(void) const;
-	void setRawBits(int const raw);
+	WrongCat(/* args */);
+	~WrongCat();
+	void makeSound(void) const;
 };
+
+
+
 
 #endif
