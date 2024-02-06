@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 12:02:01 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/01/28 14:44:10 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/06 10:33:25 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ private:
 	std::string	_name;
 	Weapon*		_weapon;
 public:
-	HumanB(std::string name);
+	HumanB(std::string const &name);
 	~HumanB();
 	void attack(void) const;
 	void setWeapon(Weapon &weapon);

@@ -6,14 +6,14 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 12:06:06 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/04 07:16:00 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/06 10:35:16 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanB.hpp"
 #include <iostream>
 
-HumanB::HumanB(std::string name)
+HumanB::HumanB(std::string const &name)
 {
 	_name = name;
 	_weapon = NULL;
@@ -21,6 +21,7 @@ HumanB::HumanB(std::string name)
 
 HumanB::~HumanB()
 {
+	_weapon = NULL;
 }
 
 void HumanB::attack(void) const
