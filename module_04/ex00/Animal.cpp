@@ -6,14 +6,14 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:49:22 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/05 16:35:05 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/08 10:11:31 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 #include <iostream>
 
-Animal::Animal(/* args */)
+Animal::Animal(void)
 {
 	type = "Animal";
 	std::cout << type << " constructor called" << std::endl;

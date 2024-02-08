@@ -6,11 +6,11 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 14:56:52 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/08 14:26:42 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/05 15:22:59 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -19,7 +19,8 @@ int main(void)
 {
 	/* main test */
 	std::srand(static_cast<unsigned int>(std::time(0)));
-	ClapTrap suck("Suck");
+	ScavTrap suck("Suck");
+	suck.guardGate();
 	while (suck.is_alive())
 	{
 		suck.attack("Poling");
@@ -29,8 +30,8 @@ int main(void)
 
 	/* copy test */
 	std::cout << "========== copy test ===============" << std::endl;
-	ClapTrap *suck1 = new ClapTrap("suck");
-	ClapTrap *seed1 = new ClapTrap(*suck1);
+	ScavTrap *suck1 = new ScavTrap("suck");
+	ScavTrap *seed1 = new ScavTrap(*suck1);
 
 	/* copy assignment test */
 	std::cout << "======== copy assign test ==========" << std::endl;

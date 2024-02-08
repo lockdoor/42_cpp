@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 08:10:32 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/04 07:42:21 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/08 15:22:41 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,14 @@
 class ScavTrap : public ClapTrap
 {
 private:
-    /* data */
+    static const int	s_hitPointMax;
+	static const int	s_energyPointMax;
+	static const int	s_attackDamage;
 public:
+    ScavTrap(void);
     ScavTrap(std::string const &name);
+    ScavTrap(ScavTrap const &rhs);
+	ScavTrap & operator=(ScavTrap const &rhs);
     ~ScavTrap();
     void attack(const std::string & target);
     void guardGate(void) const;

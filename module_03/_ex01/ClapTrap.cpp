@@ -6,41 +6,35 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 14:22:00 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/08 15:27:05 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/08 12:30:39 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include <iostream>
 
-const int ClapTrap::s_hitPointMax = 10;
-const int ClapTrap::s_energyPointMax = 10;
-const int ClapTrap::s_attackDamage = 0;
-
-void ClapTrap::__initTrap(int hitPoint, int energyPoint)
-{
-	_hitPoint = hitPoint;
-	_energyPoint = energyPoint;
-}
-
 /* ================================ constructor ============================= */
-ClapTrap::ClapTrap()
-{
-	std::cout << "ClapTrap default constructor called" << std::endl;
-	__initTrap(s_hitPointMax, s_energyPointMax);
-}
 
-ClapTrap::ClapTrap(std::string const &name) : _name(name)
+ClapTrap::ClapTrap(std::string const &name)
 {
-	std::cout << "ClapTrap constructor name called" << std::endl;
-	__initTrap(s_hitPointMax, s_energyPointMax);
+	std::cout << "ClapTrap constructor string name called" << std::endl;
+	_name = name;
+	_hitPointMax = 10;
+	_hitPoint = 10;
+	_energyPointMax = 10;
+	_energyPoint = 10;
+	_attackDamage = 0;
 }
 
 ClapTrap::ClapTrap(ClapTrap const &rhs)
 {
 	std::cout << "ClapTrap copy constructor called" << std::endl;
 	_name = rhs.getName();
-	__initTrap(rhs.getHitPoint(), rhs.getEnergyPoint());
+	_hitPointMax = rhs.getHitPointMax();
+	_hitPoint = rhs.getHitPoint();
+	_energyPointMax = rhs.getEnergyPointMax();
+	_energyPoint = rhs.getEnergyPoint();
+	_attackDamage = rhs.getAttackDamage();
 }
 
 ClapTrap & ClapTrap::operator=(ClapTrap const &rhs)
@@ -48,7 +42,11 @@ ClapTrap & ClapTrap::operator=(ClapTrap const &rhs)
 	std::cout << "ClapTrap copy assignment called" << std::endl;
 	if (this != &rhs) {
 		_name = rhs.getName();
-		__initTrap(rhs.getHitPoint(), rhs.getEnergyPoint());
+		_hitPointMax = rhs.getHitPointMax();
+		_hitPoint = rhs.getHitPoint();
+		_energyPointMax = rhs.getEnergyPointMax();
+		_energyPoint = rhs.getEnergyPoint();
+		_attackDamage = rhs.getAttackDamage();
 	}
 	return (*this);
 }
@@ -71,7 +69,7 @@ void ClapTrap::setName(std::string const & name)
 
 int ClapTrap::getHitPointMax(void) const
 {
-	return (s_hitPointMax);
+	return (_hitPointMax);
 }
 
 int ClapTrap::getHitPoint(void) const
@@ -81,7 +79,7 @@ int ClapTrap::getHitPoint(void) const
 
 int ClapTrap::getEnergyPointMax(void) const
 {
-	return (s_energyPointMax);
+	return (_energyPointMax);
 }
 
 int ClapTrap::getEnergyPoint(void) const
@@ -91,7 +89,7 @@ int ClapTrap::getEnergyPoint(void) const
 
 int ClapTrap::getAttackDamage(void) const
 {
-	return (s_attackDamage);
+	return (_attackDamage);
 }
 
 /* =========================== member function ======================== */
@@ -106,7 +104,7 @@ void ClapTrap::attack(const std::string & target)
 		return ;
 	_energyPoint -= 1;
 	std::cout << BLUE << "ClapTrap " << _name << " attacks " << target << ", causing "
-		<< s_attackDamage << " points of damage!" << RESET << std::endl;
+		<< _attackDamage << " points of damage!" << RESET << std::endl;
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
@@ -121,7 +119,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 {
 	if (_energyPoint){
 		_hitPoint = _hitPoint + amount;
-		if (_hitPoint > s_hitPointMax) _hitPoint = s_hitPointMax;
+		if (_hitPoint > _hitPointMax) _hitPoint = _hitPointMax;
 		_energyPoint -= 1;
 		std::cout << GREEN << "ClapTrap " << _name << " repaired " << amount << ", hit point remain " 
 			<< _hitPoint << " energy point remain " << _energyPoint << RESET << std::endl;

@@ -6,44 +6,41 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 14:22:00 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/02 08:08:12 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/08 15:19:58 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include <iostream>
 
-/* ================================ constructor ============================= */
-ClapTrap::ClapTrap(/* args */)
+const int ClapTrap::s_hitPointMax = 10;
+const int ClapTrap::s_energyPointMax = 10;
+const int ClapTrap::s_attackDamage = 0;
+
+void ClapTrap::__initTrap(int hitPoint, int energyPoint)
 {
-	std::cout << "ClapTrap default constructor called" << std::endl;
-	_hitPointMax = 10;
-	_hitPoint = 10;
-	_energyPointMax = 10;
-	_energyPoint = 10;
-	_attackDamage = 0;
+	_hitPoint = hitPoint;
+	_energyPoint = energyPoint;
 }
 
-ClapTrap::ClapTrap(std::string const &name)
+/* ================================ constructor ============================= */
+ClapTrap::ClapTrap()
 {
-	std::cout << "ClapTrap constructor string name called" << std::endl;
-	_name = name;
-	_hitPointMax = 10;
-	_hitPoint = 10;
-	_energyPointMax = 10;
-	_energyPoint = 10;
-	_attackDamage = 0;
+	std::cout << "ClapTrap default constructor called" << std::endl;
+	__initTrap(s_hitPointMax, s_energyPointMax);
+}
+
+ClapTrap::ClapTrap(std::string const &name) : _name(name)
+{
+	std::cout << "ClapTrap constructor name called" << std::endl;
+	__initTrap(s_hitPointMax, s_energyPointMax);
 }
 
 ClapTrap::ClapTrap(ClapTrap const &rhs)
 {
 	std::cout << "ClapTrap copy constructor called" << std::endl;
 	_name = rhs.getName();
-	_hitPointMax = rhs.getHitPointMax();
-	_hitPoint = rhs.getHitPoint();
-	_energyPointMax = rhs.getEnergyPointMax();
-	_energyPoint = rhs.getEnergyPoint();
-	_attackDamage = rhs.getAttackDamage();
+	__initTrap(rhs.getHitPoint(), rhs.getEnergyPoint());
 }
 
 ClapTrap & ClapTrap::operator=(ClapTrap const &rhs)
@@ -51,11 +48,7 @@ ClapTrap & ClapTrap::operator=(ClapTrap const &rhs)
 	std::cout << "ClapTrap copy assignment called" << std::endl;
 	if (this != &rhs) {
 		_name = rhs.getName();
-		_hitPointMax = rhs.getHitPointMax();
-		_hitPoint = rhs.getHitPoint();
-		_energyPointMax = rhs.getEnergyPointMax();
-		_energyPoint = rhs.getEnergyPoint();
-		_attackDamage = rhs.getAttackDamage();
+		__initTrap(rhs.getHitPoint(), rhs.getEnergyPoint());
 	}
 	return (*this);
 }
@@ -78,7 +71,7 @@ void ClapTrap::setName(std::string const & name)
 
 int ClapTrap::getHitPointMax(void) const
 {
-	return (_hitPointMax);
+	return (s_hitPointMax);
 }
 
 int ClapTrap::getHitPoint(void) const
@@ -88,7 +81,7 @@ int ClapTrap::getHitPoint(void) const
 
 int ClapTrap::getEnergyPointMax(void) const
 {
-	return (_energyPointMax);
+	return (s_energyPointMax);
 }
 
 int ClapTrap::getEnergyPoint(void) const
@@ -98,7 +91,7 @@ int ClapTrap::getEnergyPoint(void) const
 
 int ClapTrap::getAttackDamage(void) const
 {
-	return (_attackDamage);
+	return (s_attackDamage);
 }
 
 /* =========================== member function ======================== */
@@ -113,7 +106,7 @@ void ClapTrap::attack(const std::string & target)
 		return ;
 	_energyPoint -= 1;
 	std::cout << BLUE << "ClapTrap " << _name << " attacks " << target << ", causing "
-		<< _attackDamage << " points of damage!" << RESET << std::endl;
+		<< s_attackDamage << " points of damage!" << RESET << std::endl;
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
@@ -128,7 +121,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 {
 	if (_energyPoint){
 		_hitPoint = _hitPoint + amount;
-		if (_hitPoint > _hitPointMax) _hitPoint = _hitPointMax;
+		if (_hitPoint > s_hitPointMax) _hitPoint = s_hitPointMax;
 		_energyPoint -= 1;
 		std::cout << GREEN << "ClapTrap " << _name << " repaired " << amount << ", hit point remain " 
 			<< _hitPoint << " energy point remain " << _energyPoint << RESET << std::endl;
