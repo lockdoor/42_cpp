@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 07:11:54 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/01/31 13:07:12 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/07 10:25:43 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,25 +24,13 @@ Fixed::Fixed(void)
 Fixed::Fixed(int const n)
 {
 	std::cout << "Int constructor called" << std::endl;
-	int   a = n * (1 << _fract);
-    if (a < 0){
-        a = ~a;
-        a += 1;
-    }
-    _fixed = a;
+	_fixed = n * (1 << _fract);
 }
 
 Fixed::Fixed(float const f)
 {
 	std::cout << "Float constructor called" << std::endl;
-	float a = f * (1 << _fract);
-	int b = int(std::roundf(a));
-	if (a < 0){
-		b = Fixed::abs(b);
-		b = ~b;
-		b += 1;
-	}
-	_fixed =  b;
+	_fixed = std::roundf(f * (1 << _fract));
 }
 
 Fixed::Fixed(Fixed const & rhs)
@@ -78,28 +66,12 @@ void Fixed::setRawBits(int const raw)
 
 int	Fixed::toInt(void) const
 {
-	float f = toFloat();
-	int res	= int(f);
-	return (res);
+	return (int(toFloat()));
 }
 
 float Fixed::toFloat(void) const
 {
-	int c = Fixed::abs(_fixed);
-	int sign = 1;
-	if (_fixed < 0){
-		sign = -1;
-		c = _fixed - 1;
-		c = ~c;
-	}
-	float f = (1.0 * c) / (1 << _fract);
-	return (f * sign);
-}
-
-int	Fixed::abs(int x)
-{
-	int mask = x >> (sizeof(int) * 8 - 1);
-	return (x + mask) ^ mask;
+	return float(_fixed) / ( 1 << _fract );
 }
 
 /* ========= overload function ========= */

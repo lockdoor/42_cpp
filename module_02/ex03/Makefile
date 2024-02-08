@@ -3,9 +3,9 @@ NAME = fixed
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp Fixed.cpp
+SRCS = main.cpp Fixed.cpp Point.cpp bsc.cpp
 
-HEADERS = Fixed.hpp
+HEADERS = Fixed.hpp Point.hpp
 
 OBJS = $(SRCS:.cpp=.o)
 

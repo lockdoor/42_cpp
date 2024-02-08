@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 07:09:01 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/01/31 13:28:30 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/07 12:51:50 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,55 +26,48 @@ int main( void ) {
 	std::cout << Fixed::max( a, b ) << std::endl;
 	std::cout << (b / 0) << std::endl;
 	return 0;
-	}
+}
 
 /*
 int main(void)
 {
-	// Fixed 		a;
 	Fixed b(10);
 	Fixed c(42.42f);
-	Fixed const e(b);
-	Fixed const f(c);
-	// Fixed d(b);
+	Fixed d(b);
 
-	// a = Fixed(1234.4321f);
+	std::cout << "compair operator" << std::endl;	
+	std::cout << b << " < " << c << " = " << (b < c) << std::endl;
+	std::cout << b << " > " << c << " = " << (b > c) << std::endl;
+
+	std::cout << b << " <= " << c << " = " << (b <= c) << std::endl;
+	std::cout << b << " <= " << d << " = " << (b <= d) << std::endl;
+	std::cout << c << " <= " << b << " = " << (c <= b) << std::endl;
+
+	std::cout << b << " >= " << c << " = " << (b >= c) << std::endl;
+	std::cout << b << " >= " << d << " = " << (b >= d) << std::endl;
+	std::cout << c << " >= " << b << " = " << (c >= b) << std::endl;
 	
-	// std::cout << b << " < " << c << " = " << (b < c) << std::endl;
-	// std::cout << b << " > " << c << " = " << (b > c) << std::endl;
+	std::cout << b << " == " << d << " = " << (b == d) << std::endl;
+	std::cout << b << " != " << d << " = " << (b != d) << std::endl;
 
-	// std::cout << b << " <= " << c << " = " << (b <= c) << std::endl;
-	// std::cout << b << " <= " << d << " = " << (b <= d) << std::endl;
-	// std::cout << c << " <= " << b << " = " << (c <= b) << std::endl;
+	std::cout << "operand operator" << std::endl;
+	std::cout << b << " + " << c << " = " << (b + c) << std::endl;
+	std::cout << b << " - " << c << " = " << (b - c) << std::endl;
+	std::cout << b << " * " << c << " = " << (b * c) << std::endl;
+	std::cout << b << " / " << c << " = " << (b / c) << std::endl;
 
-	// std::cout << b << " >= " << c << " = " << (b >= c) << std::endl;
-	// std::cout << b << " >= " << d << " = " << (b >= d) << std::endl;
-	// std::cout << c << " >= " << b << " = " << (c >= b) << std::endl;
-	
+	std::cout << "operand operator ++ --" << std::endl;
+	std::cout << "c   " << c << std::endl;
+	std::cout << "++c " << ++c << std::endl;
+	std::cout << "--c " << --c << std::endl;
+	std::cout << "c++ " << c++ << std::endl;
+	std::cout << "c   " << c << std::endl;
+	std::cout << "c-- " << c-- << std::endl;
+	std::cout << "c   " << c << std::endl;
 
-	// std::cout << b << " == " << d << " = " << (b == d) << std::endl;
-	// std::cout << b << " != " << d << " = " << (b != d) << std::endl;
-
-	// std::cout << b << " + " << c << " = " << (b + c) << std::endl;
-	// std::cout << b << " - " << c << " = " << (b - c) << std::endl;
-	// std::cout << b << " * " << c << " = " << (b * c) << std::endl;
-	// std::cout << b << " / " << c << " = " << (b / c) << std::endl;
-
-	// std::cout << c << std::endl;
-	// std::cout << ++c << std::endl;
-	// std::cout << --c << std::endl;
-	// std::cout << c++ << std::endl;
-	// std::cout << c << std::endl;
-	// std::cout << c-- << std::endl;
-	// std::cout << c << std::endl;
-
-	// std::cout << "b: " << &b << std::endl;
-	// std::cout << "c: " << &c << std::endl;
-	std::cout << Fixed::min(b, c) << std::endl;
-	std::cout << Fixed::min(e, f) << std::endl;
-	// std::cout << Fixed::min(b, c) << std::endl;
-	std::cout << Fixed::max(b, c) << std::endl;
-	std::cout << Fixed::max(e, f) << std::endl;
+	std::cout << "operand min max" << std::endl;
+	std::cout << "min " << b << " : " << c << " = " << Fixed::min(b, c) << std::endl;
+	std::cout << "max " << b << " : " << c << " = " << Fixed::max(b, c) << std::endl;
 	return (0);
 }
 */

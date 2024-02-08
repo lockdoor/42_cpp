@@ -1,11 +1,11 @@
-NAME = a.out
+NAME = fixed
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = main.cpp Fixed.cpp
 
-# HEADERS = 
+HEADERS = Fixed.hpp
 
 OBJS = $(SRCS:.cpp=.o)
 
