@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/05 12:57:16 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/09 14:50:35 by pnamnil          ###   ########.fr       */
+/*   Created: 2024/02/09 15:06:58 by pnamnil           #+#    #+#             */
+/*   Updated: 2024/02/09 15:44:55 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-#define DOG_HPP
-#include "Animal.hpp"
+#ifndef BRAIN_HPP
+#define BRAIN_HPP
 
-class Dog : public Animal
+#include <string>
+
+class Brain
 {
+private:
+	std::string _ideas[100];
+	void	__initIdeas();
 public:
-	Dog(void);
-	Dog(Dog const &rhs);
-	Dog & operator=(Dog const &rhs);
-	~Dog();
-	void makeSound(void) const;
+	Brain(/* args */);
+	Brain(Brain const &rhs);
+	Brain & operator=(Brain const &rhs);
+	~Brain();
+
+	std::string getIdeas(int index) const;
+	void setIdea(std::string const &idea, int index);
 };
 
 #endif
