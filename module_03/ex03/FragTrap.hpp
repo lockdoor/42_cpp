@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/04 07:47:16 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/04 10:42:28 by pnamnil          ###   ########.fr       */
+/*   Created: 2024/02/02 08:10:32 by pnamnil           #+#    #+#             */
+/*   Updated: 2024/02/09 10:00:24 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@
 
 class FragTrap : virtual public ClapTrap
 {
-private:
-	/* data */
 public:
-	FragTrap(std::string const &name);
-	~FragTrap();
-	void highFivesGuys(void) const;
+    FragTrap(void);
+    FragTrap(std::string const &name);
+    FragTrap(FragTrap const &rhs);
+	FragTrap & operator=(FragTrap const &rhs);
+    ~FragTrap();
+    void attack(const std::string & target);
+    void highFivesGuys(void) const;
 };
 
 #endif

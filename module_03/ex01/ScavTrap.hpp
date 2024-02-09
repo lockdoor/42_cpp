@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 08:10:32 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/08 15:22:41 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/09 09:04:12 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,6 @@
 
 class ScavTrap : public ClapTrap
 {
-private:
-    static const int	s_hitPointMax;
-	static const int	s_energyPointMax;
-	static const int	s_attackDamage;
 public:
     ScavTrap(void);
     ScavTrap(std::string const &name);
