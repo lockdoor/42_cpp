@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:49:22 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/09 14:52:19 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/10 07:17:36 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,21 @@
 Animal::Animal(void)
 {
 	type = "Animal";
-	std::cout << type << " constructor called" << std::endl;
+	std::cout << "Animal " << type << " constructor called" << std::endl;
 }
 
 Animal::Animal(Animal const &rhs)
 {
 	if (this == &rhs) return;
 	type = rhs.getType();
-	std::cout << type << " copy constuct called" << std::endl;
+	std::cout << "Animal " << type << " copy constuct called" << std::endl;
 }
 
 Animal & Animal::operator=(Animal const &rhs)
 {
 	if (this == &rhs) return (*this);
 	type = rhs.getType();
-	std::cout << type << " copy assignment constuct called" << std::endl;
+	std::cout << "Animal " << type << " copy assignment constuct called" << std::endl;
 	return (*this);
 }
 

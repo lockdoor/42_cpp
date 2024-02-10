@@ -22,8 +22,8 @@ m:
 	./$(NAME)
 
 l:
-# valgrind --leak-check=full ./$(NAME)
-	leaks --atExit -- ./$(NAME)
+	valgrind --leak-check=full ./$(NAME)
+#leaks --atExit -- ./$(NAME)
 
 clean:
 	rm -f $(OBJS)
