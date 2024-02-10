@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:51:23 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/10 08:13:34 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/10 09:09:08 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int main(void)
 
 
 /* main test */
-/*
 int main(void)
 {
 	Animal* cat = new Cat();
@@ -67,24 +66,26 @@ int main(void)
 	}
 	return (0);
 }
-*/
 
 /* cat deep copy test*/
-// int main(void)
-// {
-// 	Cat cat1 = Cat();
-// 	std::cout << std::endl;
+/*
+int main(void)
+{
+	Cat cat1 = Cat();
+	std::cout << std::endl;
 	
-// 	Cat cat2 = Cat(cat1);
-// 	std::cout << std::endl;
+	Cat cat2 = Cat(cat1);
+	std::cout << std::endl;
 
-// 	cat2 = cat1;
-// 	std::cout << std::endl;
+	cat2 = cat1;
+	std::cout << std::endl;
 
-// 	return (0);
-// }
+	return (0);
+}
+*/
 
 /* dog deep copy test*/
+/*
 int main(void)
 {
 	Dog dog1 = Dog();
@@ -98,3 +99,4 @@ int main(void)
 
 	return (0);
 }
+*/
