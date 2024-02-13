@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:51:23 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/09 14:57:29 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/12 10:06:55 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 
 int main(void)
 {
-	/*
 	std::cout << "=========== correct ============" << std::endl;
 	const Animal *animal = new Animal();
 	const Animal *dog = new Dog();
@@ -55,8 +54,8 @@ int main(void)
 	std::cout << "=========== delete ============" << std::endl;
 	delete dog1;
 	delete dog2;
-	*/
-	
+
+	/*
 	std::cout << "=========== incorrect ============" << std::endl;
 	const WrongAnimal *wrongAnimal = new WrongAnimal();
 	const WrongAnimal *wrongCat = new WrongCat();
@@ -64,5 +63,6 @@ int main(void)
 	wrongCat->makeSound();
 	delete wrongAnimal;
 	delete wrongCat;
+	*/
 	return (0);
 }

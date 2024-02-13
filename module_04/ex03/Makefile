@@ -5,10 +5,12 @@ CFLAGS = -Wall -Wextra -Werror  -Wshadow  -std=c++98
 # CFLAGS = -Wall -Wextra -Werror  -Wno-shadow  -std=c++98
 
 SRCS = main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp \
-		MateriaSource.cpp
+		MateriaSource.cpp unitTestIMateriaSource.cpp unitTestAMateria.cpp \
+		unitTestICharacter.cpp
 
 HEADERS = AMateria.hpp Ice.hpp Cure.hpp ICharacter.hpp \
-			Character.hpp IMateriaSource.hpp MateriaSource.hpp
+			Character.hpp IMateriaSource.hpp MateriaSource.hpp \
+			main.hpp
 
 OBJS = $(SRCS:.cpp=.o)
 

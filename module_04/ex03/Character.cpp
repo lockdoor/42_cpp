@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 08:23:28 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/11 11:31:12 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/12 06:34:18 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,28 @@ std::string const & Character::getName() const
 
 void Character::equip(AMateria *m)
 {
+	if (!m) {
+		std::cout << _name << " can not equip null item" << std::endl;
+		return;
+	}
+	// check already exist
 	for (int i = 0; i < SLOT_SIZE; i++)
 	{
-		if (_item[i] == NULL) _item[i] = m;
-		return ;
+		if (_item[i] && _item[i] == m) {
+			std::cout << _name << " item already equip" << std::endl;
+			return;
+		}
 	}
-	std::cout << _name << " slot is full" << std::endl;
+	for (int i = 0; i < SLOT_SIZE; i++)
+	{
+		if (_item[i] == NULL)
+		{
+			_item[i] = m;
+			std::cout << _name << " equip " << m->getType() << " to slot " << i + 1 << std::endl;
+			return ;
+		}
+	}
+	std::cout << _name << " slot is full item will drop on floor" << std::endl;
 }
 
 void Character::unequip(int idx)

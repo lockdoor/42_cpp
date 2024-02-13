@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Debug.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/11 07:42:46 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/12 06:25:30 by pnamnil          ###   ########.fr       */
+/*   Created: 2024/02/13 09:04:50 by pnamnil           #+#    #+#             */
+/*   Updated: 2024/02/13 09:10:59 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.hpp"
+#ifndef DEBUG_HPP
+#define DEBUG_HPP
 
-int main(void)
-{
-	// unitTestAMateria();
-	// unitTestIMateriaSource();
-	unitTestICharacter();
-	return (0);
-}
+# define DEBUG_MODE 0
+
+#endif

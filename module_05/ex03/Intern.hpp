@@ -1,21 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/11 07:42:46 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/12 06:25:30 by pnamnil          ###   ########.fr       */
+/*   Created: 2024/02/13 16:21:01 by pnamnil           #+#    #+#             */
+/*   Updated: 2024/02/13 16:55:43 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.hpp"
+#ifndef INTERN_HPP
+#define INTERN_HPP
 
-int main(void)
+#include <string>
+#include "AForm.hpp"
+
+class Intern
 {
-	// unitTestAMateria();
-	// unitTestIMateriaSource();
-	unitTestICharacter();
-	return (0);
-}
+private:
+	std::string _form[3];
+public:
+	Intern(void);
+	Intern(Intern const &rhs);
+	~Intern();
+	Intern & operator=(Intern const &rhs);
+	
+	AForm *makeForm(std::string const &form, std::string const &target);
+	std::string const & getForm(int idx) const;
+};
+
+#endif
