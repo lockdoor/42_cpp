@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 08:10:32 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/09 09:04:12 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/15 14:29:19 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class ScavTrap : public ClapTrap
 {
 public:
     ScavTrap(void);
-    ScavTrap(std::string const &name);
+    ScavTrap(const char* name);
     ScavTrap(ScavTrap const &rhs);
 	ScavTrap & operator=(ScavTrap const &rhs);
     ~ScavTrap();

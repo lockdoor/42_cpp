@@ -6,19 +6,20 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 10:14:49 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/09 10:16:39 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/15 15:32:41 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 #include <iostream>
 
-FragTrap::FragTrap(void){
-    std::cout << "FragTrap default constructor called" << std::endl;
+FragTrap::FragTrap(void) : ClapTrap()
+{
+	std::cout << "FragTrap constructor default called" << std::endl;
     __initTrap(100, 100, 100, 100, 30);
-};
+}
 
-FragTrap::FragTrap(std::string const &name) : ClapTrap(name){
+FragTrap::FragTrap(const char* name) : ClapTrap(name){
     std::cout << "FragTrap constructor name called" << std::endl;
     __initTrap(100, 100, 100, 100, 30);
 };
@@ -43,14 +44,11 @@ FragTrap::~FragTrap()
 
 void FragTrap::attack(const std::string & target)
 {
-	if (!is_alive())
-		return ;
-	_ep -= 1;
-	std::cout << BLUE << "FragTrap " << _name << " attacks " << target << ", causing "
-		<< _atk << " points of damage!" << RESET << std::endl;
+	__doAttack("FragTrap", target);
 }
 
 void FragTrap::highFivesGuys(void) const
 {
+	if (!is_alive()) return;
 	std::cout << "FragTrap positive high fives request" << std::endl;
 }

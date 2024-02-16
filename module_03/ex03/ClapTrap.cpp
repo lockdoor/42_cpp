@@ -6,56 +6,66 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 14:22:00 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/09 13:35:44 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/15 14:28:44 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include <iostream>
 
-void ClapTrap::__initTrap(int hp, int ep, int hpMaX, int epMax, int atk)
+void ClapTrap::__initTrap(u_int32_t hp, u_int32_t ep, u_int32_t hpMaX, u_int32_t epMax, u_int32_t atk)
 {
 	_hp = hp;
 	_ep = ep;
 	_hpMax = hpMaX;
-	_ep = epMax;
+	_epMax = epMax;
 	_atk = atk;
 }
 
 /* ================================ constructor ============================= */
-ClapTrap::ClapTrap()
+
+ClapTrap::ClapTrap(void) : _name("Unknow")
 {
 	__initTrap(10, 10, 10, 10, 0);
-	_name = "Default";
-	std::cout << "ClapTrap default constructor called" << std::endl;
+	std::cout << "ClapTrap constructor default called" << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string const &name) : _name(name)
+ClapTrap::ClapTrap(const char* name)
 {
+	if (!name) _name = "Unknow";
+	else _name = name;
 	__initTrap(10, 10, 10, 10, 0);
-	// std::cout << "addr: " << this << " size: " << sizeof(*this) << std::endl;
 	std::cout << "ClapTrap constructor name called" << std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap const &rhs)
 {
 	_name = rhs.getName();
-	__initTrap(rhs.getHitPoint(), rhs.getEnergyPoint(), 10, 10, 0);
+	__initTrap(rhs.getHp(), rhs.getEp(), rhs.getHpMax(), rhs.getEpMax(), rhs.getAtk());
 	std::cout << "ClapTrap copy constructor called" << std::endl;
-}
-
-ClapTrap & ClapTrap::operator=(ClapTrap const &rhs)
-{
-	if (this == &rhs) return (*this);
-	_name = rhs.getName();
-	__initTrap(rhs.getHitPoint(), rhs.getEnergyPoint(), 10, 10, 0);
-	std::cout << "ClapTrap copy assignment called" << std::endl;
-	return (*this);
 }
 
 ClapTrap::~ClapTrap()
 {
 	std::cout << "ClapTrap destructor called" << std::endl;
+}
+
+/* =========================== overload operator ======================== */
+ClapTrap & ClapTrap::operator=(ClapTrap const &rhs)
+{
+	if (this == &rhs) return (*this);
+	_name = rhs.getName();
+	__initTrap(rhs.getHp(), rhs.getEp(), rhs.getHpMax(), rhs.getEpMax(), rhs.getAtk());
+	std::cout << "ClapTrap copy assignment called" << std::endl;
+	return (*this);
+}
+
+std::ostream & operator<<(std::ostream &o, ClapTrap const &i)
+{
+	o << "name: " << i.getName() << ", hp: " << i.getHp() 
+		<< ", ep: " << i.getEp() << ", hpMax: " << i.getHpMax() 
+		<< ", epMax: " << i.getEpMax() << ", atk: " << i.getAtk();
+	return (o);
 }
 
 /* =========================== geter - seter ======================== */
@@ -64,32 +74,28 @@ const std::string & ClapTrap::getName(void) const
 	return (_name);
 }
 
-void ClapTrap::setName(std::string const & name)
-{
-	_name = name;
-}
-
-int ClapTrap::getHitPointMax(void) const
+int ClapTrap::getHpMax(void) const
 {
 	return (_hpMax);
 }
 
-int ClapTrap::getHitPoint(void) const
+int ClapTrap::getHp(void) const
 {
 	return (_hp);
 }
 
-int ClapTrap::getEnergyPointMax(void) const
+int ClapTrap::getEpMax(void) const
 {
 	return (_epMax);
 }
 
-int ClapTrap::getEnergyPoint(void) const
+int ClapTrap::getEp(void) const
 {
+	
 	return (_ep);
 }
 
-int ClapTrap::getAttackDamage(void) const
+int ClapTrap::getAtk(void) const
 {
 	return (_atk);
 }
@@ -100,37 +106,36 @@ bool ClapTrap::is_alive(void) const
 	return (_hp > 0 && _ep > 0);
 }
 
-void ClapTrap::attack(const std::string & target)
+void ClapTrap::__doAttack(const std::string &name, const std::string &target)
 {
-	if (!is_alive())
-		return ;
+	if (!is_alive()) return ;
 	_ep -= 1;
-	std::cout << BLUE << "ClapTrap " << _name << " attacks " << target << ", causing "
+	std::cout << BLUE << name  << " " << _name << " attacks " << target << ", causing "
 		<< _atk << " points of damage!" << RESET << std::endl;
+}
+
+void ClapTrap::attack(const std::string &target)
+{
+	__doAttack("ClapTrap", target);
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-	_hp = _hp - amount;
-	if(_hp < 0) _hp = 0;
-	std::cout << RED << "ClapTrap " << _name << " take " << amount 
-		<< " damage, hit point remain " << _hp << RESET << std::endl;
+	if (!is_alive()) return ;
+	if (amount > _hp) _hp = 0;
+	else _hp -= amount;
+	std::cout << RED << "ClapTrap " << _name << " take " << amount << " damage" RESET << std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
-	if (_ep){
-		_hp = _hp + amount;
-		if (_hp > _hpMax) _hp = _hpMax;
-		_ep -= 1;
-		std::cout << GREEN << "ClapTrap " << _name << " repaired " << amount 
-			<< ", hit point remain " << _hp << " energy point remain " 
-			<< _ep << RESET << std::endl;
-	}
-}
-
-void ClapTrap::showStatus(void) const
-{
-	std::cout << "name: " << _name << ", hp: " << _hp << ", ep: " << _ep
-		<< ", atk: " << _atk << std::endl;
+	if (!is_alive())
+		return ;
+	// handle overflow unsigned int
+	if (_hp > _hp + amount) _hp = _hpMax;
+	// handle overflow _hpMax
+	else if (_hp + amount > _hpMax) _hp = _hpMax;
+	else _hp = _hp + amount;
+	_ep -= 1;
+	std::cout << GREEN << "ClapTrap " << _name << " repaired " << amount << RESET << std::endl;	
 }

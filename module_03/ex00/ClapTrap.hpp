@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 13:56:55 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/09 10:18:24 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/15 14:26:56 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,29 +23,29 @@
 class ClapTrap
 {
 private:
-	std::string _name;
-	int		_hpMax;
-	int		_epMax;
-	int		_atk;
-	int		_hp;
-	int		_ep;
-	void	__initTrap(int hp, int ep, int hpMaX, int epMax, int atk);
+	std::string	_name;
+	u_int32_t	_hpMax;
+	u_int32_t	_epMax;
+	u_int32_t	_atk;
+	u_int32_t	_hp;
+	u_int32_t	_ep;
+	void	__initTrap(u_int32_t hp, u_int32_t ep, u_int32_t hpMaX, u_int32_t epMax, u_int32_t atk);
+	void	__doAttack(const std::string &name, std::string const &target);
 	
 public:
-	ClapTrap();
-	ClapTrap(std::string const &name);
+	ClapTrap(void);
+	ClapTrap(const char* name);
 	ClapTrap(ClapTrap const &rhs);
 	ClapTrap & operator=(ClapTrap const &rhs);
 	~ClapTrap();
 	
 	/* geter seter */
 	const std::string & getName(void) const;
-	void setName(std::string const & name);
-	int getHitPointMax(void) const;
-	int getHitPoint(void) const;
-	int getEnergyPointMax(void) const;
-	int getEnergyPoint(void) const;
-	int getAttackDamage(void) const;
+	int getHpMax(void) const;
+	int getHp(void) const;
+	int getEpMax(void) const;
+	int getEp(void) const;
+	int getAtk(void) const;
 
 
 	/* member function */
@@ -53,7 +53,8 @@ public:
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);
 	bool is_alive(void) const;
-	void showStatus(void) const;
 };
+
+std::ostream & operator<<(std::ostream &o, ClapTrap const &i);
 
 #endif

@@ -13,26 +13,22 @@
 #include "DiamondTrap.hpp"
 #include <iostream>
 
-DiamondTrap::DiamondTrap(void){
-	__initTrap(100, 50, 100, 50, 20);
-    std::cout << "DiamondTrap default constructor called" << std::endl;
-};
-
-DiamondTrap::DiamondTrap(std::string const &name) : 
-	ClapTrap("ClapTrap"), 
-	ScavTrap("ScavTrap"),
-	FragTrap("FragTrap"),
-	_name(name)
+DiamondTrap::DiamondTrap(void) : ClapTrap(), ScavTrap(), FragTrap()
 {
-	__initTrap(100, 50, 100, 50, 20);
-	// std::cout << "clap: " << ClapTrap::_ep 
-	// 	<< ", scav: " << ScavTrap::_ep 
-	// 	<< ", frag: " << FragTrap::_ep << std::endl;
-	// std::cout << "addr: " << this << " size: " << sizeof(*this) << std::endl;
+	__initTrap(100, 50, 100, 50, 30);
+    std::cout << "DiamondTrap constructor default called " << std::endl;
+}
+
+DiamondTrap::DiamondTrap(const char* name)
+{
+	if (!name) _name = "Unknow";
+	else _name = name;
+	ScavTrap::_name = _name + "_clap_name";
+	__initTrap(100, 50, 100, 50, 30);
     std::cout << "DiamondTrap constructor name called " << std::endl;
 };
 
-DiamondTrap::DiamondTrap(DiamondTrap const &rhs) : ClapTrap(rhs)
+DiamondTrap::DiamondTrap(DiamondTrap const &rhs) : ClapTrap(rhs), ScavTrap(rhs), FragTrap(rhs)
 {
 	_name = rhs._name;
     std::cout << "DiamondTrap copy constructor called" << std::endl;
@@ -40,10 +36,10 @@ DiamondTrap::DiamondTrap(DiamondTrap const &rhs) : ClapTrap(rhs)
 
 DiamondTrap & DiamondTrap::operator=(DiamondTrap const &rhs)
 {
-	std::cout << "DiamondTrap copy assignment called" << std::endl;
 	if (this == &rhs) return (*this);
 	_name = rhs._name;
 	ClapTrap::operator=(rhs);
+	std::cout << "DiamondTrap copy assignment called" << std::endl;
 	return (*this);
 }
 
@@ -54,6 +50,7 @@ DiamondTrap::~DiamondTrap()
 
 void DiamondTrap::whoAmI(void) const
 {
+	if (!is_alive()) return;
 	std::cout << "DiamondTrap I am " << _name << " my parent is " 
 		<< ScavTrap::_name << std::endl;
 }

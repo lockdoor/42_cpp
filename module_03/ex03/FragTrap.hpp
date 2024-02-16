@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 08:10:32 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/09 10:00:24 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/15 15:38:24 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class FragTrap : virtual public ClapTrap
 {
 public:
     FragTrap(void);
-    FragTrap(std::string const &name);
+    FragTrap(const char* name);
     FragTrap(FragTrap const &rhs);
 	FragTrap & operator=(FragTrap const &rhs);
     ~FragTrap();
