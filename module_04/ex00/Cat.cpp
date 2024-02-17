@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 13:09:30 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/09 14:55:59 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/17 08:00:38 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,18 @@
 Cat::Cat(/* args */)
 {
 	type = "Cat";
-	std::cout << type << " constructor called" << std::endl;
+	std::cout << "Cat " << type << " constructor called" << std::endl;
 }
 
 Cat::Cat(Cat const &rhs) : Animal(rhs)
 {
-	std::cout << type << " copy constuct called" << std::endl;
+	std::cout << "Cat " << type << " copy constuct called" << std::endl;
 }
 
 Cat & Cat::operator=(Cat const &rhs)
 {
 	Animal::operator=(rhs);
-	std::cout << type << " copy assign constuct called" << std::endl;
+	std::cout << "Cat " << type << " copy assign constuct called" << std::endl;
 	return (*this);
 }
 

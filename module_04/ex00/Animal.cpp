@@ -6,23 +6,20 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:49:22 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/09 14:52:19 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/17 07:59:08 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 #include <iostream>
 
-Animal::Animal(void)
+Animal::Animal(void) : type("Animal")
 {
-	type = "Animal";
 	std::cout << type << " constructor called" << std::endl;
 }
 
-Animal::Animal(Animal const &rhs)
+Animal::Animal(Animal const &rhs) : type(rhs.getType())
 {
-	if (this == &rhs) return;
-	type = rhs.getType();
 	std::cout << type << " copy constuct called" << std::endl;
 }
 

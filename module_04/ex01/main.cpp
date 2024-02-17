@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:51:23 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/10 09:09:08 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/17 08:14:46 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int main(void)
 }
 */
 
-
 /* main test */
+
 int main(void)
 {
 	Animal* cat = new Cat();
@@ -61,9 +61,8 @@ int main(void)
 
 	int n = 4;
 	Animal* animals[4] = { new Dog(), new Dog(), new Cat(), new Cat() };
-	for (int i = 0; i < n; i++) {
-		delete animals[i];
-	}
+	for (int i = 0; i < n; i++) animals[i]->makeSound();
+	for (int i = 0; i < n; i++) delete animals[i];
 	return (0);
 }
 

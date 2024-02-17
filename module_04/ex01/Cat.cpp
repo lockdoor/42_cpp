@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 13:09:30 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/10 08:15:02 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/17 08:10:22 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ Cat::~Cat()
 
 void Cat::makeSound(void) const
 {
-	std::cout << type << " make sound: Meaw" << std::endl;
+	std::cout << "Cat " << type << " make sound: Meaw" << std::endl;
 }
 
 Brain & Cat::getBrain(void) const

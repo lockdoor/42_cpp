@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:51:23 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/10 09:19:04 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/17 08:20:12 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,21 @@ int main(void)
 
 
 /* main test */
+
 int main(void)
 {
 	AAnimal* cat = new Cat();
+	std::cout << std::endl;
 	AAnimal* dog = new Dog();
+	std::cout << std::endl;
 	
 	// can not make instance of AAnimal
 	// AAnimal *animal = new AAnimal();
 
 	delete cat;
+	std::cout << std::endl;
 	delete dog;
+	std::cout << std::endl;
 
 	int n = 4;
 	AAnimal* AAnimals[4] = { new Dog(), new Dog(), new Cat(), new Cat() };
@@ -76,6 +81,7 @@ int main(void)
 	}
 	return (0);
 }
+
 
 /* cat deep copy test*/
 /*
