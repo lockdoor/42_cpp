@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 12:53:43 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/13 11:46:28 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/18 08:30:16 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ int main(void)
 	try{
 		Bureaucrat bob("bob", 1);
 		std::cout << bob << std::endl;
-		// bob.increment(); //expect throw Grade to Hight
+		bob.increment(); //expect throw Grade to Hight
 		bob.decrement();
 		std::cout << bob << std::endl;
 		Bureaucrat john("john", 150);
 		std::cout << john << std::endl;
-		// john.decrement(); //expect throw Grade to Low
+		john.decrement(); //expect throw Grade to Low
 		john.increment();
 		std::cout << john << std::endl;
 		Bureaucrat tom("tom", 100);
@@ -33,11 +33,11 @@ int main(void)
 		Bureaucrat tim = Bureaucrat(tom); //all tom copy to tim
 		std::cout << tim << std::endl;
 	}
-	catch(const Bureaucrat::GradeTooHighExcption e)
+	catch(const Bureaucrat::GradeTooHighException e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	catch(const Bureaucrat::GradeTooLowExcption e)
+	catch(const Bureaucrat::GradeTooLowException e)
 	{
 		std::cerr << e.what() << std::endl;
 	}

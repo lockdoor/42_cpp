@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 10:16:47 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/12 15:26:27 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/18 08:07:39 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ public:
 	static const unsigned int gradeLow = 150;
 
 	/* exception */
-	class GradeTooHighExcption : public std::exception
+	class GradeTooHighException : public std::exception
 	{
 		public:
 			virtual const char* what() const throw()
@@ -40,7 +40,7 @@ public:
 			}
 	};
 
-	class GradeTooLowExcption : public std::exception
+	class GradeTooLowException : public std::exception
 	{
 		public:
 			virtual const char* what() const throw()

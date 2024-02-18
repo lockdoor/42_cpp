@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:00:16 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/13 17:07:30 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/18 09:02:28 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,26 @@
 int main(void)
 {
 	Intern intern;
-	AForm *form = intern.makeForm("robotomy request", "Bender");
-	if(form) std::cout << *form << std::endl; delete form;
-	form = intern.makeForm("declare war", "Bender");
-	if(form) std::cout << *form << std::endl; delete form;
+	AForm *form;
+	std::string formName;
+	try {
+		formName = "robotomy request";
+		form = intern.makeForm(formName, "Bender");
+		std::cout << *form << std::endl;
+		delete form;
+	}
+	catch (const Intern::FormNotFoundException &e) {
+		std::cerr << formName << ": " << e.what() << std::endl;
+	}
+	try {
+		formName = "declare war";
+		form = intern.makeForm(formName, "Bender");
+		std::cout << *form << std::endl;
+		delete form;
+	}
+	catch (const Intern::FormNotFoundException &e) {
+		std::cerr << formName << ": " << e.what() << std::endl;
+	}
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:27:01 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/13 17:08:37 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/18 08:57:44 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,11 @@ Intern::~Intern()
 
 Intern & Intern::operator=(Intern const &rhs)
 {
-	(void) rhs;
+	if (this != &rhs) {
+		for(int i = 0; i < 3; i++) {
+			_form[i] = rhs.getForm(i);
+		}
+	}
 	if (DEBUG_MODE)
 		std::cout << "Intern copy assignment called" << std::endl;
 	return (*this);
@@ -63,6 +67,7 @@ AForm * Intern::makeForm(std::string const &form, std::string const &target)
 			break ;
 		}
 	}
+	if (idx == -1) throw (FormNotFoundException());
 	switch (idx)
 	{
 		case 0: {
