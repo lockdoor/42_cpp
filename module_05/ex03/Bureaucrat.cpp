@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 10:27:48 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/18 08:11:11 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/20 08:27:20 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 Bureaucrat::Bureaucrat(std::string const &name, int grade) : _name(name), _grade(grade) 
 {
 
-	if (_grade < gradeHight) throw GradeTooHighException();
-	if (_grade > gradeLow) throw GradeTooLowException();
+	if (_grade < GRADE_HIGHT) throw GradeTooHighException();
+	if (_grade > GRADE_LOW) throw GradeTooLowException();
 	if (DEBUG_MODE)
 		std::cout << "Bureaucrat " << _name << " constructor called" << std::endl;
 }
@@ -67,32 +67,14 @@ unsigned int Bureaucrat::getGrade() const
 
 void Bureaucrat::increment()
 {
-	try {
-		if (_grade - 1 < gradeHight) throw (GradeTooHighException());
-		--_grade;
-		std::cout << _name << " increment Grade" << std::endl;
-	}
-	catch (const GradeTooHighException &e) {
-		std::cerr << _name  << " Can not increment Grade becouse " << e.what() << std::endl;
-	}
-	catch (const std::exception &e) {
-		throw std::runtime_error("An error occurred while incrementing grade: " + std::string(e.what()));
-	}
+	if (_grade - 1 < GRADE_HIGHT) throw (GradeTooHighException());
+	--_grade;
 }
 
 void Bureaucrat::decrement()
 {
-	try {
-		if (_grade + 1 > gradeLow) throw GradeTooLowException();
-		++_grade;
-		std::cout << _name << " decrement Grade" << std::endl;
-	}
-	catch (const GradeTooLowException &e) {
-		std::cerr << _name << " Can not decrement Grade becouse " << e.what() << std::endl;
-	}
-	catch (const std::exception &e) {
-		throw std::runtime_error("An error occurred while decrementing grade: " + std::string(e.what()));
-	}
+	if (_grade + 1 > GRADE_LOW) throw GradeTooLowException();
+	++_grade;
 }
 
 void Bureaucrat::signForm(AForm &form)
@@ -101,25 +83,8 @@ void Bureaucrat::signForm(AForm &form)
 		form.beSigned(*this);
 		std::cout << _name << " signed " << form.getName() << std::endl;
 	}
-	catch (const AForm::GradeTooHighException &e){
-		std::cerr << _name << " couldn't sign " << form.getName() 
-			<< " because " << e.what() << std::endl;
-	}
-	catch (const AForm::GradeTooLowException &e){
-		std::cerr << _name << " couldn't sign " << form.getName() 
-			<< " because " << e.what() << std::endl;
-	}
-	catch (const AForm::FormAlreadySignedException &e){
-		std::cerr << _name << " couldn't sign " << form.getName() 
-			<< " because " << e.what() << std::endl;
-	}
-	catch (const AForm::FileOpenException &e){
-		std::cerr << _name << " couldn't sign " << form.getName() 
-			<< " because " << e.what() << std::endl;
-	}
 	catch (const std::exception &e){
-		std::cerr << _name << " couldn't sign " << form.getName() 
-			<< " because " << e.what() << std::endl;
+		throw (std::runtime_error(_name + " couldn't sign " + form.getName() + " because " + e.what()));
 	}
 }
 
@@ -132,6 +97,6 @@ void Bureaucrat::executeForm(AForm const &form) const
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << _name << " couldn't execute because " << e.what() << std::endl;
+		throw (std::runtime_error(_name + " couldn't execute " + form.getName() + " because " + e.what()));
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:00:16 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/13 15:41:27 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/20 09:13:48 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,43 +22,72 @@ int main(void)
 	try{
 		form1 = new ShrubberyCreationForm("tree_file");
 		std::cout << *form1 << std::endl;
+		
 		Bureaucrat bob("bob", 150);
 		std::cout << bob << std::endl;
-		bob.signForm(*form1); // expect throw grade to low
+		try {
+			bob.signForm(*form1); // expect throw grade to low
+		} catch (const std::exception &e) {
+			std::cerr << e.what() << std::endl;
+		}
+		
 		Bureaucrat tom("tom", 99);
 		std::cout << tom << std::endl;
-		tom.executeForm(*form1); //expect throw form not signed
-		tom.signForm(*form1);
+		try {
+			tom.executeForm(*form1); //expect throw form not signed
+		} catch (const std::exception &e) {
+			std::cerr << e.what() << std::endl;
+		}
+		
+		try {
+			tom.signForm(*form1);	
+		} catch (const std::exception &e) {
+			std::cerr << e.what() << std::endl;
+		}
 		std::cout << *form1 << std::endl;
-		tom.signForm(*form1); // expect throw form already signed
-		bob.executeForm(*form1); // expect throw grade to low
+		
+		try {
+			tom.signForm(*form1); // expect throw form already signed
+		} catch (const std::exception &e) {
+			std::cerr << e.what() << std::endl;
+		}
+		try {
+			bob.executeForm(*form1); // expect throw grade to low	
+		} catch (const std::exception &e) {
+			std::cerr << e.what() << std::endl;
+		}
+		
 		for(int i = 0; i < 30; i++) bob.increment();
 		std::cout << bob << std::endl;
-		bob.executeForm(*form1);
+		try {
+			bob.executeForm(*form1);
+		} catch (const std::exception &e) {
+			std::cerr << e.what() << std::endl;
+		}
+		
 		delete form1;
 	}
-	catch(AForm::GradeTooHighException &e)
-	{
-		std::cout << "can not create Form because " << e.what() << std::endl;
-	}
-	catch(AForm::GradeTooLowException &e)
+	catch(const AForm::GradeTooHighException &e)
 	{
 		std::cerr << "can not create Form because " << e.what() << std::endl;
 	}
-	catch(Bureaucrat::GradeTooHighException &e)
+	catch(const AForm::GradeTooLowException &e)
+	{
+		std::cerr << "can not create Form because " << e.what() << std::endl;
+	}
+	catch(const Bureaucrat::GradeTooHighException &e)
 	{
 		std::cerr << "can not create Bureaucrat because " << e.what() << std::endl;
 	}
-	catch(Bureaucrat::GradeTooLowException &e)
+	catch(const Bureaucrat::GradeTooLowException &e)
 	{
 		std::cerr << "can not create Bureaucrat because " << e.what() << std::endl;
 	}
-	catch(std::exception &e){
+	catch(const std::exception &e){
 		std::cerr << e.what() << std::endl;
 	}
 	return (0);
 }
-
 
 /*
 int main(void)
@@ -67,38 +96,68 @@ int main(void)
 	try{
 		form1 = new RobotomyRequestForm("Bender");
 		std::cout << *form1 << std::endl;
+		
 		Bureaucrat bob("bob", 100);
 		std::cout << bob << std::endl;
-		bob.signForm(*form1); // expect throw grade to low
+		try {
+			bob.signForm(*form1); // expect throw grade to low
+		} catch (const std::exception &e) {
+			std::cerr << e.what() << std::endl;
+		}
+		
 		Bureaucrat tom("tom", 70);
 		std::cout << tom << std::endl;
-		tom.executeForm(*form1); //expect throw form not signed
-		tom.signForm(*form1);
+		try {
+			tom.executeForm(*form1); //expect throw form not signed
+		} catch (const std::exception &e) {
+			std::cerr << e.what() << std::endl;
+		}
+		
+		try {
+			tom.signForm(*form1);	
+		} catch (const std::exception &e) {
+			std::cerr << e.what() << std::endl;
+		}
 		std::cout << *form1 << std::endl;
-		tom.signForm(*form1); // expect throw form already signed
-		bob.executeForm(*form1); // expect throw grade to low
+		
+		try {
+			tom.signForm(*form1); // expect throw form already signed
+		} catch (const std::exception &e) {
+			std::cerr << e.what() << std::endl;
+		}
+		try {
+			bob.executeForm(*form1); // expect throw grade to low	
+		} catch (const std::exception &e) {
+			std::cerr << e.what() << std::endl;
+		}
+		
 		for(int i = 0; i < 60; i++) bob.increment();
 		std::cout << bob << std::endl;
-		bob.executeForm(*form1);
+		try {
+			bob.executeForm(*form1);
+		} catch (const std::exception &e) {
+			std::cerr << e.what() << std::endl;
+		}
+		
 		delete form1;
 	}
-	catch(AForm::GradeTooHighException &e)
-	{
-		std::cout << "can not create Form because " << e.what() << std::endl;
-	}
-	catch(AForm::GradeTooLowException &e)
+	catch(const AForm::GradeTooHighException &e)
 	{
 		std::cerr << "can not create Form because " << e.what() << std::endl;
 	}
-	catch(Bureaucrat::GradeTooHighException &e)
+	catch(const AForm::GradeTooLowException &e)
+	{
+		std::cerr << "can not create Form because " << e.what() << std::endl;
+	}
+	catch(const Bureaucrat::GradeTooHighException &e)
 	{
 		std::cerr << "can not create Bureaucrat because " << e.what() << std::endl;
 	}
-	catch(Bureaucrat::GradeTooLowException &e)
+	catch(const Bureaucrat::GradeTooLowException &e)
 	{
 		std::cerr << "can not create Bureaucrat because " << e.what() << std::endl;
 	}
-	catch(std::exception &e){
+	catch(const std::exception &e){
 		std::cerr << e.what() << std::endl;
 	}
 	return (0);
@@ -112,38 +171,68 @@ int main(void)
 	try{
 		form1 = new PresidentialPardonForm("Bender");
 		std::cout << *form1 << std::endl;
+		
 		Bureaucrat bob("bob", 100);
 		std::cout << bob << std::endl;
-		bob.signForm(*form1); // expect throw grade to low
+		try {
+			bob.signForm(*form1); // expect throw grade to low
+		} catch (const std::exception &e) {
+			std::cerr << e.what() << std::endl;
+		}
+		
 		Bureaucrat tom("tom", 20);
 		std::cout << tom << std::endl;
-		tom.executeForm(*form1); //expect throw form not signed
-		tom.signForm(*form1);
+		try {
+			tom.executeForm(*form1); //expect throw form not signed
+		} catch (const std::exception &e) {
+			std::cerr << e.what() << std::endl;
+		}
+		
+		try {
+			tom.signForm(*form1);	
+		} catch (const std::exception &e) {
+			std::cerr << e.what() << std::endl;
+		}
 		std::cout << *form1 << std::endl;
-		tom.signForm(*form1); // expect throw form already signed
-		bob.executeForm(*form1); // expect throw grade to low
+		
+		try {
+			tom.signForm(*form1); // expect throw form already signed
+		} catch (const std::exception &e) {
+			std::cerr << e.what() << std::endl;
+		}
+		try {
+			bob.executeForm(*form1); // expect throw grade to low	
+		} catch (const std::exception &e) {
+			std::cerr << e.what() << std::endl;
+		}
+		
 		for(int i = 0; i < 96; i++) bob.increment();
 		std::cout << bob << std::endl;
-		bob.executeForm(*form1);
+		try {
+			bob.executeForm(*form1);
+		} catch (const std::exception &e) {
+			std::cerr << e.what() << std::endl;
+		}
+		
 		delete form1;
 	}
-	catch(AForm::GradeTooHighException &e)
-	{
-		std::cout << "can not create Form because " << e.what() << std::endl;
-	}
-	catch(AForm::GradeTooLowException &e)
+	catch(const AForm::GradeTooHighException &e)
 	{
 		std::cerr << "can not create Form because " << e.what() << std::endl;
 	}
-	catch(Bureaucrat::GradeTooHighException &e)
+	catch(const AForm::GradeTooLowException &e)
+	{
+		std::cerr << "can not create Form because " << e.what() << std::endl;
+	}
+	catch(const Bureaucrat::GradeTooHighException &e)
 	{
 		std::cerr << "can not create Bureaucrat because " << e.what() << std::endl;
 	}
-	catch(Bureaucrat::GradeTooLowException &e)
+	catch(const Bureaucrat::GradeTooLowException &e)
 	{
 		std::cerr << "can not create Bureaucrat because " << e.what() << std::endl;
 	}
-	catch(std::exception &e){
+	catch(const std::exception &e){
 		std::cerr << e.what() << std::endl;
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:00:16 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/13 11:46:08 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/20 08:13:52 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,35 @@ int main(void)
 		// Form f("tax", 151 , 150); // expect throw grade to low
 		Bureaucrat bob("bob", 120);
 		std::cout << bob << std::endl;
-		bob.signForm(tax); // expect throw grade to low
+		try {
+			bob.signForm(tax); // expect throw grade to low
+			std::cout << tax << std::endl;
+		} catch (const std::exception &e){
+			std::cerr << e.what() << std::endl;
+		}
 		Bureaucrat tom("tom", 99);
 		std::cout << tom << std::endl;
-		tom.signForm(tax);
-		tom.signForm(tax); // expect throw form already signed
+		try {
+			tom.signForm(tax);
+			std::cout << tax << std::endl;
+		} catch (const std::exception &e){
+			std::cerr << e.what() << std::endl;
+		}
+		try {
+			tom.signForm(tax); // expect throw form already signed
+			std::cout << tax << std::endl;
+		} catch (const std::exception &e){
+			std::cerr << e.what() << std::endl;
+		}
 		for(int i = 0; i < 30; i++)
 			bob.increment();
 		std::cout << bob << std::endl;
-		bob.signForm(tax); // expect throw form already signed
+		try {
+			bob.signForm(tax); // expect throw form already signed
+			std::cout << tax << std::endl;
+		} catch (const std::exception &e){
+			std::cerr << e.what() << std::endl;
+		}
 	}
 	catch(const Form::GradeTooHighException &e)
 	{

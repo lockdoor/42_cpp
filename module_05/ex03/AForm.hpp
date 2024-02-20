@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 15:40:08 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/13 16:09:31 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/20 08:28:23 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,6 @@ public:
 
 	/* overload function */
 	AForm & operator=(AForm const &rhs);
-
-	/* static */
-	static const unsigned int gradeHight = 1;
-	static const unsigned int gradeLow = 150;
 
 	/* exception */
 	class GradeTooHighException : public std::exception

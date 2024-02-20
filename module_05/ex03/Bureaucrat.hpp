@@ -6,15 +6,17 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 10:16:47 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/13 11:03:07 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/20 08:18:59 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 # include <string>
-// # include <exception>
-#include "AForm.hpp"
+# include <exception>
+# include "AForm.hpp"
+# define GRADE_HIGHT 1
+# define GRADE_LOW 150
 
 class AForm;
 
@@ -28,10 +30,6 @@ public:
 	Bureaucrat(Bureaucrat const &rhs);
 	~Bureaucrat();
 	Bureaucrat & operator=(Bureaucrat const &rhs);
-
-	/* static */
-	static const unsigned int gradeHight = 1;
-	static const unsigned int gradeLow = 150;
 
 	/* exception */
 	class GradeTooHighException : public std::exception

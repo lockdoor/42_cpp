@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 10:28:15 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/18 08:32:52 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/18 06:55:58 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,9 @@ ShrubberyCreationForm & ShrubberyCreationForm::operator=(ShrubberyCreationForm c
 
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
-
 	if (!this->getSigned())
 		throw (AForm::FormNotSignedException());
-	if (executor.getGrade() > this->getExecGrade())
+	if (executor.getGrade() > this->getExecGrade()) // use this because attribute is private by Base class
 		throw (Bureaucrat::GradeTooLowException());
 	// make job
 	std::string file_name = _target + "_shrubbery";

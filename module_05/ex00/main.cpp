@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 12:53:43 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/18 08:30:16 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/20 07:20:44 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,41 @@ int main(void)
 	try{
 		Bureaucrat bob("bob", 1);
 		std::cout << bob << std::endl;
-		bob.increment(); //expect throw Grade to Hight
-		bob.decrement();
-		std::cout << bob << std::endl;
+		
+		try {
+			bob.increment(); //expect throw Grade to Hight
+			std::cout << bob << std::endl;
+		} catch (const Bureaucrat::GradeTooHighException &e) {
+			std::cerr << bob.getName() << " can not increment grade because " 
+				<< e.what() << std::endl;
+		}
+
+		try {
+			bob.decrement();
+			std::cout << bob << std::endl;
+		} catch (const Bureaucrat::GradeTooLowException &e) {
+			std::cerr << bob.getName() << " can not decrement grade because " 
+				<< e.what() << std::endl;
+		}
+		
 		Bureaucrat john("john", 150);
-		std::cout << john << std::endl;
-		john.decrement(); //expect throw Grade to Low
-		john.increment();
-		std::cout << john << std::endl;
+
+		try {
+			john.decrement(); //expect throw Grade to Low
+			std::cout << john << std::endl;
+		} catch (const Bureaucrat::GradeTooLowException &e) {
+			std::cerr << john.getName() << " can not decrement grade because " 
+				<< e.what() << std::endl;
+		}
+
+		try {
+			john.increment(); //expect throw Grade to Low
+			std::cout << john << std::endl;
+		} catch (const Bureaucrat::GradeTooLowException &e) {
+			std::cerr << john.getName() << " can not decrement grade because " 
+				<< e.what() << std::endl;
+		}
+		
 		Bureaucrat tom("tom", 100);
 		std::cout << tom << std::endl;
 		tom = bob; //it copy only grade because name is const

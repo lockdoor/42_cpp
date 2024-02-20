@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:37:11 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/13 10:01:29 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/20 07:30:29 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 Form::Form(std::string const &name, int sign, int exec) 
 	: _name(name), _signGrade(sign), _execGrade(exec)
 {
-	if (_signGrade < gradeHight || _execGrade < gradeHight)
+	if (_signGrade < GRADE_HIGHT || _execGrade < GRADE_HIGHT)
 		throw (GradeTooHighException());
-	if (_signGrade > gradeLow || _execGrade > gradeLow)
+	if (_signGrade > GRADE_LOW || _execGrade > GRADE_LOW)
 		throw (GradeTooLowException());
 	_signed = false;
 	if (DEBUG_MODE)

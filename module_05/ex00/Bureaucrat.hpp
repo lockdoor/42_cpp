@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 10:16:47 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/18 08:07:39 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/20 07:10:11 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define BUREAUCRAT_HPP
 # include <string>
 # include <exception>
+
+# define GRADE_HIGHT 1
+# define GRADE_LOW 150
 
 class Bureaucrat
 {
@@ -25,10 +28,6 @@ public:
 	Bureaucrat(Bureaucrat const &rhs);
 	~Bureaucrat();
 	Bureaucrat & operator=(Bureaucrat const &rhs);
-
-	/* static */
-	static const unsigned int gradeHight = 1;
-	static const unsigned int gradeLow = 150;
 
 	/* exception */
 	class GradeTooHighException : public std::exception

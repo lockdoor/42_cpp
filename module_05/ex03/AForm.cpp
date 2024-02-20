@@ -19,9 +19,9 @@
 AForm::AForm(std::string const &name, int sign, int exec) 
 	: _name(name), _signGrade(sign), _execGrade(exec)
 {
-	if (_signGrade < gradeHight || _execGrade < gradeHight)
+	if (_signGrade < GRADE_HIGHT || _execGrade < GRADE_HIGHT)
 		throw (GradeTooHighException());
-	if (_signGrade > gradeLow || _execGrade > gradeLow)
+	if (_signGrade > GRADE_LOW || _execGrade > GRADE_LOW)
 		throw (GradeTooLowException());
 	_signed = false;
 	if (DEBUG_MODE)
