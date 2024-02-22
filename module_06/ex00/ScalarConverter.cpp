@@ -6,19 +6,18 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 06:38:31 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/19 16:36:20 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/21 12:49:55 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 #include <sstream>
 #include <iostream>
-#include <cstdlib>
+// #include <cstdlib>
+#include <limits>
 
-#define CHAR 1
-#define INT 2
-#define FLOAT 3
-#define DOUBLE 4
+#define RESET   "\033[0m"
+#define RED     "\033[31m"
 
 ScalarConverter::ScalarConverter(/* args */)
 {
@@ -28,75 +27,104 @@ ScalarConverter::~ScalarConverter()
 {
 }
 
-// can store 38
-void printFloat(long double const &src)
+std::string charString(long double const &d)
 {
-	std::ostringstream str;
-	str << src;
-	std::cout << "float: ";
-	if (src < -std::numeric_limits<float>::max() 
-		|| src > std::numeric_limits<float>::max())
-		std::cout << "imposible" << std::endl;
-	else if (str.str().find(".") == std::string::npos)
-		std::cout << static_cast<float>(src) << ".0f" << std::endl;
-	else
-		std::cout << static_cast<float>(src) << "f" << std::endl;
+	if (d != d 
+		|| d == std::numeric_limits<long double>::infinity()
+		|| d == -std::numeric_limits<long double>::infinity()
+		|| d > std::numeric_limits<char>::max()
+		|| d < std::numeric_limits<char>::min())
+		return ("Impossible");
+	char c = static_cast<char>(d);
+	if (isprint(c)) {
+		std::ostringstream oss;
+		oss << "'" << c << "'";
+		return (oss.str());
+	}
+	return ("Non displayable");
 }
 
-// bool printSpacial(long double const &src, int c)
-// {
-// 	o
-// 	switch (c)
-// 	{
-// 	case CHAR:
-// 		if ()
-// 		break;
-	
-// 	default:
-// 		break;
-// 	}
-// }
+std::string intString(long double const &d)
+{
+	if (d != d 
+		|| d == std::numeric_limits<long double>::infinity()
+		|| d == -std::numeric_limits<long double>::infinity()
+		|| d > std::numeric_limits<int>::max()
+		|| d < std::numeric_limits<int>::min())
+		return ("Impossible");
+	std::ostringstream oss;
+	oss << static_cast<int>(d);
+	return (oss.str());
+}
 
-// void printChar(long double const &src)
-// {
-	
-// }
+// 1 check special
+// 2 check overflow
+// 3 normal case
+std::string floatString(long double const &d)
+{
+	std::ostringstream oss;
+	if (d != d 
+		|| d == std::numeric_limits<long double>::infinity()
+		|| d == -std::numeric_limits<long double>::infinity()) {
+		oss << d << "f";
+		if (oss.str() == "inff") {
+			oss.str("+inff");
+		}
+	} 
+	else if (d > std::numeric_limits<float>::max() 
+		|| d < -std::numeric_limits<float>::max()) {
+		oss << "Impossible";
+	}
+	else {
+		oss << static_cast<float>(d);
+		if (oss.str().find(".") == std::string::npos) {
+			oss << ".0f";
+		} else {
+			oss << "f";
+		}
+	}
+	return (oss.str());
+}
 
-/* if  */
-// void printInt()
+std::string doubleString(long double const &d)
+{
+	std::ostringstream oss;
+	if (d != d 
+		|| d == std::numeric_limits<long double>::infinity()
+		|| d == -std::numeric_limits<long double>::infinity()) {
+		oss << d << "f";
+		if (oss.str() == "inf") {
+			oss.str("+inf");
+		}
+	} else {
+		oss << d;
+		if (oss.str().find(".") == std::string::npos) {
+			oss << ".0";
+		}
+	}
+	return (oss.str());
+}
 
 // std::strtod() can parse nan.. to nan
-// std::isnan (not available in C++98)
+// std::isnan (not available in C++98), use (Nan != Nan) instead
+// if overflow or non digit display Impossible
+// this stream can check overflow or wrong input
+// if input 42.0f on mac stringstream is get 0
 void ScalarConverter::convert(std::string const &src)
 {
 	long double d;
-	std::istringstream(src) >> d;
-	// std::cout << d << std::endl;
-	// std::ostringstream s;
-	// s << d;
-	// std::cout << s.str() << std::endl;
-	// std::cout << std::strtod(src.data(), NULL) << std::endl;
-
-	// NaN check
-	// if (d != d) std::cout << "1 d is NaN" << std::endl;
-	// if (std::numeric_limits<double>::has_signaling_NaN && d == std::numeric_limits<double>::signaling_NaN()) std::cout << "2 d is NaN" << std::endl;
-	// std::cout << "Int: " << static_cast<int>(d) << std::endl;
-	
-	//
-	// printChar(d);
-
-	//int
-	std::cout << "int: " << (int) d << std::endl;
-	std::cout << "float: " << (int) d << std::endl;
-	
-		
-	// printFloat(d);
-	// if (d !=0 && (d < -std::numeric_limits<double>::min() || d > std::numeric_limits<double>::max())) std::cout <<  "double: Imposible" << std::endl;
-
-	// handle overflow
-	// std::cout << std::numeric_limits<double>::min() << std::endl;
-	// std::cout << std::numeric_limits<double>::lowest() << std::endl;
-	// if (d < std::numeric_limits<double>::lowest()) std::cout <<  "double: Imposible lowest" << std::endl;
-	// if (d < -std::numeric_limits<double>::max()) std::cout <<  "double: Imposible min" << std::endl;
-	// if (d < std::numeric_limits<float>::min()) std::cout <<  "float: Imposible" << std::endl;
+	std::istringstream iss(src);
+	if(iss >> d) {
+		// std::cout << "right digit" << std::endl;
+		std::cout << "char: " << charString(d) << std::endl;
+		std::cout << "int: " << intString(d) << std::endl;
+		std::cout << RED << "float: " << floatString(d) << RESET << std::endl;
+		std::cout << "double: " << doubleString(d) << std::endl;
+	} else {
+		std::cout << "result: " << d << std::endl;
+		std::cout << "char: " << " Impossible" << std::endl;
+		std::cout << "int: " << " Impossible" << std::endl;
+		std::cout << RED << "float: " << " Impossible" << RESET << std::endl;
+		std::cout << "double: " << " Impossible" << std::endl;
+	}
 }
