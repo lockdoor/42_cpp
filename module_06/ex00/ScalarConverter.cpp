@@ -6,26 +6,25 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 06:38:31 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/21 12:49:55 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/22 11:42:13 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 #include <sstream>
 #include <iostream>
-// #include <cstdlib>
 #include <limits>
 
 #define RESET   "\033[0m"
 #define RED     "\033[31m"
 
-ScalarConverter::ScalarConverter(/* args */)
-{
-}
+ScalarConverter::ScalarConverter(/* args */){}
 
-ScalarConverter::~ScalarConverter()
-{
-}
+ScalarConverter::~ScalarConverter(){}
+
+ScalarConverter::ScalarConverter(ScalarConverter const &rhs){(void) rhs;}
+
+ScalarConverter & ScalarConverter::operator=(ScalarConverter const &rhs){(void) rhs; return (*this);}
 
 std::string charString(long double const &d)
 {
@@ -118,13 +117,13 @@ void ScalarConverter::convert(std::string const &src)
 		// std::cout << "right digit" << std::endl;
 		std::cout << "char: " << charString(d) << std::endl;
 		std::cout << "int: " << intString(d) << std::endl;
-		std::cout << RED << "float: " << floatString(d) << RESET << std::endl;
+		std::cout << "float: " << floatString(d) << std::endl;
 		std::cout << "double: " << doubleString(d) << std::endl;
 	} else {
 		std::cout << "result: " << d << std::endl;
 		std::cout << "char: " << " Impossible" << std::endl;
 		std::cout << "int: " << " Impossible" << std::endl;
-		std::cout << RED << "float: " << " Impossible" << RESET << std::endl;
+		std::cout << "float: " << " Impossible" << std::endl;
 		std::cout << "double: " << " Impossible" << std::endl;
 	}
 }

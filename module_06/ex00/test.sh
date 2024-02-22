@@ -11,10 +11,12 @@ test(){
 test "42.0f"
 test "256.0f"
 test "-1"
-# test "nan"
-# test "inf"
-# test "-inf"
-# test "hello"
-test "42.ttr"
-# test $OVERF
-# test $OVERD
+test "nan"
+test "inf"
+test "-inf"
+test "hello"
+test "f"
+test "42.54ttrf"
+test "0"
+test $OVERF
+test $OVERD
