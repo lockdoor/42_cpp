@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   whatever.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/23 13:35:50 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/23 14:41:03 by pnamnil          ###   ########.fr       */
+/*   Created: 2024/02/23 10:29:28 by pnamnil           #+#    #+#             */
+/*   Updated: 2024/02/23 11:17:41 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "iter.hpp"
-
-int main(void)
+template<typename T>
+void swap(T &a, T &b)
 {
-	int n[] = {1,2,3,4,5,6};
-	iter(n, 5, print<int>);
-	std::cout << std::endl;
+	T c = a;
+	a = b;
+	b = c;
+}
 
-	Num num[5];
-	iter(num, 5, print<Num>);
-	std::cout << std::endl;
+template<typename T>
+T const & min(T const &a, T const &b)
+{
+	return a < b ? a : b;
+}
 
-	std::string strs[5];
-	strs[0] = "One";
-	strs[1] = "Two";
-	strs[2] = "Three";
-	strs[3] = "Four";
-	strs[4] = "Five";
-	iter(strs, 5, print<std::string>);
-	std::cout << std::endl;
-	return (0);
+template<typename T>
+T const & max(T const &a, T const &b)
+{
+	return a > b ? a : b;
 }

@@ -5,30 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/23 13:35:50 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/23 14:41:03 by pnamnil          ###   ########.fr       */
+/*   Created: 2024/02/23 10:32:19 by pnamnil           #+#    #+#             */
+/*   Updated: 2024/02/23 10:50:21 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "iter.hpp"
+#include "whatever.hpp"
+#include <iostream>
+#include <string>
 
 int main(void)
 {
-	int n[] = {1,2,3,4,5,6};
-	iter(n, 5, print<int>);
-	std::cout << std::endl;
+	int a = 2;
+	int b = 3;
+	::swap(a, b);
+	std::cout << "a = " << a << ", b = " << b << std::endl;
+	std::cout << "min( a, b ) = " << ::min(a, b) << std::endl;
+	std::cout << "max( a, b ) = " << ::max(a, b) << std::endl;
 
-	Num num[5];
-	iter(num, 5, print<Num>);
-	std::cout << std::endl;
-
-	std::string strs[5];
-	strs[0] = "One";
-	strs[1] = "Two";
-	strs[2] = "Three";
-	strs[3] = "Four";
-	strs[4] = "Five";
-	iter(strs, 5, print<std::string>);
-	std::cout << std::endl;
+	std::string c = "chaine1";
+	std::string d = "chaine2";
+	
+	::swap(c, d);
+	std::cout << "c = " << c << ", d = " << d << std::endl;
+	std::cout << "min( c, d ) = " << ::min(c, d) << std::endl;
+	std::cout << "max( c, d ) = " << ::max(c, d) << std::endl;
 	return (0);
 }
