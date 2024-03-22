@@ -1,22 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 11:20:53 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/29 08:23:56 by pnamnil          ###   ########.fr       */
+/*   Created: 2024/02/27 10:37:18 by pnamnil           #+#    #+#             */
+/*   Updated: 2024/02/27 10:39:56 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.hpp"
+#ifndef SPAN_HPP
+#define SPAN_HPP
+#include <set>
 
-int main(void)
+class  Span : public set
 {
-	Base *obj = generate();
-	identity(obj);
-	identity(*obj);
-	delete obj;
-	return (0);
+private:
+	/* data */
+public:
+	Span(/* args */);
+	~Span();
+};
+
+Span:: Span(/* args */)
+{
 }
+
+Span::~Span()
+{
+}
+
+
+#endif

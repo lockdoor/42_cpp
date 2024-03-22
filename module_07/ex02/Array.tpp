@@ -6,16 +6,15 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 15:00:25 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/23 16:47:09 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/25 08:34:58 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Array.hpp"
 #include <stdexcept>
-#include <iostream>
 
 template<typename T>
-Array<T>::Array(/* args */): _datas(new T[1]), _size(1) {}
+Array<T>::Array(/* args */): _datas(NULL), _size(0) {}
 
 template<typename T>
 Array<T>::Array(unsigned int size): _datas(new T[size]), _size(size) {}
@@ -23,20 +22,20 @@ Array<T>::Array(unsigned int size): _datas(new T[size]), _size(size) {}
 template<typename T>
 Array<T>::Array(Array const &rhs) {
 	_size = rhs.size();
-	_datas = new T[_size];
+	if (_size) _datas = new T[_size];
 	for (unsigned int i = 0; i < _size; i++) {
 		_datas[i] = rhs[i];
 	}
 }
 
 template<typename T>
-Array<T>::~Array() { delete [] _datas;}
+Array<T>::~Array() { if(_size) delete [] _datas;}
 
 /* overload operator */
 template<typename T>
 Array<T> & Array<T>::operator=(Array const &rhs)
 {
-	if (this != rhs) {
+	if (this != rhs && _size) {
 		delete [] _datas;
 		_size = rhs.size();
 		_datas = new T[_size];
@@ -50,13 +49,13 @@ Array<T> & Array<T>::operator=(Array const &rhs)
 template<typename T>
 const T& Array<T>::operator[](unsigned int idx) const {
 	if (idx < _size) return (_datas[idx]);
-	else throw std::runtime_error("Index out of bounds");
+	else throw std::out_of_range("Index out of bounds");
 }
 
 template<typename T>
 T& Array<T>::operator[](unsigned int idx){
 	if (idx < _size) return (_datas[idx]);
-	else throw std::runtime_error("Index out of bounds");
+	else throw std::out_of_range("Index out of bounds");
 }
 
 

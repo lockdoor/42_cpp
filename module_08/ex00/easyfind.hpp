@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 11:20:53 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/29 08:23:56 by pnamnil          ###   ########.fr       */
+/*   Created: 2024/02/24 06:56:25 by pnamnil           #+#    #+#             */
+/*   Updated: 2024/02/27 07:09:42 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.hpp"
+#ifndef EASYFIND_HPP
+#define EASYFIND_HPP
+#include <algorithm>
+#include <iostream>
+#include <stdexcept>
 
-int main(void)
+template<typename T>
+int easyfind(T v, int n)
 {
-	Base *obj = generate();
-	identity(obj);
-	identity(*obj);
-	delete obj;
-	return (0);
+    typename T::iterator it = std::find(v.begin(), v.end(), n);
+    if (it == v.end()) throw (std::runtime_error(": Not found "));
+    return (*it);
 }
+
+#endif

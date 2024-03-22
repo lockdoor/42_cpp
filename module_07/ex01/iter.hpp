@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 13:21:10 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/23 14:35:09 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/24 12:03:56 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,3 @@ void iter(T arr, unsigned int n, F func)
 	}
 }
 
-template<typename T>
-void print(T el)
-{
-	std::cout << el << " ";
-}

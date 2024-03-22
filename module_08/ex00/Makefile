@@ -1,11 +1,11 @@
-NAME = array
+NAME = easyfind
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = my.cpp 
+SRCS = main.cpp 
 
-HEADERS = Array.hpp Array.tpp
+HEADERS = easyfind.hpp
 
 OBJS = $(SRCS:.cpp=.o)
 
@@ -21,8 +21,8 @@ m:
 	./$(NAME)
 
 l:
-	valgrind --leak-check=full ./$(NAME)
-# leaks --atExit -- ./$(NAME)
+# valgrind --leak-check=full ./$(NAME)
+	leaks --atExit -- ./$(NAME)
 
 clean:
 	rm -f $(OBJS)

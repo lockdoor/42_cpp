@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 15:29:14 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/02/23 16:41:43 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/02/25 08:26:30 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 int main(void)
 {
-	Array<int> n(10);
+	Array<int> n;
 	
 	try {
 		std::cout << n[10] << std::endl;

@@ -1,11 +1,11 @@
-NAME = array
+NAME = prog
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = my.cpp 
+SRCS = main.cpp 
 
-HEADERS = Array.hpp Array.tpp
+HEADERS = 
 
 OBJS = $(SRCS:.cpp=.o)
 
