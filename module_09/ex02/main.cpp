@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 07:01:01 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/03/23 11:58:51 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/03/24 09:43:12 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int main(void)
 {
-	PmergeMe<std::vector<int>, int> v;
+	PmergeMe<std::vector<int>, std::vector<std::pair<int, int> >, int> v;
 	
 	v.push_back(5);
 	v.push_back(2);
@@ -26,5 +26,6 @@ int main(void)
 	v.push_back(15);
 	v.push_back(8);
 	v.showDatas();
+	v.sort();
 	return (0);
 }

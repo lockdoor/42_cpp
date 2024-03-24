@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 06:29:19 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/03/23 12:15:46 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/03/24 09:49:24 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 #include <vector>
 #include <iostream>
 
-template<class container, typename T>
+template<typename Container, typename Pair, typename T>
 class PmergeMe {
 private:
-	container _data;
-    // PmergeMe();
+	Container _data;
+    // PmergeMe
 public:
     // Constructor
 	PmergeMe();
@@ -31,6 +31,11 @@ public:
     void showDatas();
 	void push_back(T);
 	void sort();
+
+private:
+    Pair __makePairs();
+    void __sortPairs(Pair &pairs);
+    void __showPairs(Pair &pairs);
 };
 
 #endif
