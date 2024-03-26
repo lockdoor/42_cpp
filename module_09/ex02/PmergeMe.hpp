@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 06:29:19 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/03/24 09:49:24 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/03/26 07:00:11 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,34 @@
 
 #include <vector>
 #include <iostream>
+#include <string>
 
 template<typename Container, typename Pair, typename T>
 class PmergeMe {
 private:
 	Container _data;
-    // PmergeMe
+    double  _useTime;
+
 public:
     // Constructor
 	PmergeMe();
-    // Destructor
+    PmergeMe(int argc, char **argv);
+    PmergeMe(PmergeMe<Container, Pair, T> const &rhs);
+    PmergeMe<Container, Pair, T> & operator=(PmergeMe<Container, Pair, T> const &rhs);
     ~PmergeMe();
 
     // Member function declaration
     void showDatas();
-	void push_back(T);
 	void sort();
+    bool isSort();
+    double getUseTime() const;
+    std::size_t getSize() const;
 
 private:
     Pair __makePairs();
-    void __sortPairs(Pair &pairs);
+    void __mergeSortPairs(Pair &pairs);
     void __showPairs(Pair &pairs);
+    size_t __positionByBinarySearch(T needle);
 };
 
 #endif

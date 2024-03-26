@@ -6,7 +6,7 @@
 /*   By: pnamnil <pnamnil@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 13:01:00 by pnamnil           #+#    #+#             */
-/*   Updated: 2024/03/20 14:07:20 by pnamnil          ###   ########.fr       */
+/*   Updated: 2024/03/26 07:26:21 by pnamnil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,7 @@ void BitcoinExchange::calculate(std::string const &filename)
 			}
 			it = _data.lower_bound(date);
 			if (it != _data.begin()) it--;
-			if (it != _data.end()) {
-				std::cout << intToDateString(date) << " => " << value << " = " << value * it->second << std::endl;
-				// std::cout << intToDateString(date) << " => " << value << " * " << it->second << std::endl;
-			}
+			std::cout << intToDateString(date) << " => " << value << " = " << value * it->second << std::endl;
 		}
 	}
 }
